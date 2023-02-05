@@ -2,7 +2,11 @@
 import time
 import sys
 from random import randint
-import inputchecker
+try:
+    import pyautogui
+    import pyinputplus as pyip
+except:
+    print('Hmm, it seems like you have hot installed two of our VERY special modules that will be needed to work the\n magic! Plese enter these into the command line in the terminal: \n pip install PyInputPlus \n pip install PyAutoGUI \n (For mac and linux users please use pip3 rather than pip)')
 
 
 def game():
@@ -23,11 +27,11 @@ def game():
     while True:
         print('Select an Activity:')
         print('''(1) go to the market\n(2) check your idiotic phone\n(3) mine some crypto\n(4) Go to the bank (Coming soon!)\n(5) Work for money\n(6) Go to the lottery''')
-        answer = inputchecker.numberchecker()
+        answer = pyip.inputNum()
         if answer == 1:
             print('welcome to the market. Please check what you would like to buy.')
             print('1. Energy drink: $250 (Why...)\n2. Ticket: $10 (Wonder what it is used for...)\n')
-            answer = inputchecker.numberchecker()
+            answer = pyip.inputNum()
             if answer == 1:
                 Money -= 250
                 print('ok sure')
@@ -60,7 +64,7 @@ def game():
         elif answer == 2:
             print('hi welcome to your phone.')
             print('(1) buy some crypto\n(2) sell your crypto\n(3) pay yur bills\n(4) Order something online lol.\n(5) Check your bank balance')
-            answer = inputchecker.numberchecker()
+            answer = pyip.inputNum()
             if answer == 1:
                 Money, Crypto = cryptopurchase(Money, Crypto)
             if answer == 2:
@@ -75,10 +79,10 @@ def game():
                 print('-3- bingchiling GPU (CPS: 5 Price: 4000)')
                 print('-4- your mom on GPU (CPS: 8 price: 7000)')
                 time.sleep(3)
-                answer = inputchecker.numberchecker()
+                answer = pyip.inputNum()
                 if answer == 1:
                     print('so u want to buy slow shit gpu? It increases per run by 10 secs! --NO REFUND--')
-                    answer = inputchecker.alpchecker()
+                    answer = pyip.inputYesNo()
                     answer = answer.lower()
                     if answer == 'yes' or answer == 'y':
                         if Money >= 500:
@@ -95,7 +99,7 @@ def game():
                         continue
                 if answer == 2:
                     print('so u want to buy taco GPU? It increases per run by 7 secs! --NO REFUND--')
-                    answer = inputchecker.alpchecker()
+                    answer = pyip.inputYesNo()
                     answer = answer.lower()
                     if answer == 'yes' or answer == 'y':
                         if Money >= 1000:
@@ -112,9 +116,9 @@ def game():
                         continue
                 if answer == 3:
                     print('so u want to buy bingchiling GPU? It increases per run by 5 secs! --NO REFUND--')
-                    answer = inputchecker.alpchecker()
+                    answer = pyip.inputYesNo()
                     answer = answer.lower()
-                    if answer == 'yes' or answer == 'y':
+                    if answer == 'yes':
                         if Money >= 4000:
                             Money -= 3000
                             runsecs += 5
@@ -129,9 +133,9 @@ def game():
                         continue
                 if answer == 4:
                     print('so u want to buy your mom on GPU? It increases the run by 4 secs! --NO REFUND--')
-                    answer = inputchecker.alpchecker()
+                    answer = pyip.inputYesNo()
                     answer = answer.lower()
-                    if answer == 'yes' or answer == 'y':
+                    if answer == 'yes':
                         if Money >= 7000:
                             Money -= 7000
                             runsecs += 4
@@ -195,7 +199,7 @@ def game():
                             two =randint(1, 10)
                             answer = one + two
                             print(f'What is {one} + {two}?')
-                            playerinput = inputchecker.numberchecker()
+                            playerinput = pyip.inputNum()
                             if answer == playerinput:
                                 print('Well done!')
                                 success = 'y'
@@ -223,22 +227,22 @@ def game():
             lotteryjackpot = randint(10000,50000)
             print(f'Jackpot today: {lotteryjackpot}')
             print('Bet:')
-            bet = inputchecker.numberchecker()
+            bet = pyip.inputNum()
             if bet < 1:
                 print('You did not place a bet!')
                 continue
             else:
                 Money -= bet
                 print('First number:')
-                firstlotnum = inputchecker.numberchecker()
+                firstlotnum = pyip.inputNum()
                 print('Second number:')
-                seclotnum = inputchecker.numberchecker()
+                seclotnum = pyip.inputNum()
                 print('Third number:')
-                Thirdtlotnum = inputchecker.numberchecker()
+                Thirdtlotnum = pyip.inputNum()
                 print('Fourth number:')
-                fourthlotnum = inputchecker.numberchecker()
+                fourthlotnum = pyip.inputNum()
                 print('Bonus number:')
-                bonuslotnum = inputchecker.numberchecker()
+                bonuslotnum = pyip.inputNum()
                 input('Now, we will be announcing the winning numbers. (Press enter to continue)')
                 winningfirst = randint(1,10)
                 winningsec = randint(1, 10)
@@ -284,11 +288,11 @@ def cryptopurchase(crypto_money, crypto_crypto):
     print(f'the price of poopcoin is {cryptoprice}')
     time.sleep(1)
     print('would u like to purhase poopcoin? (Y/N)')
-    answer = inputchecker.alpchecker()
+    answer = pyip.inputYesNo()
     answer = answer.lower()
-    if answer == 'y' or answer == 'yes':
+    if answer == 'yes':
         print('you are so cool. how many?')
-        numberofcrypto = inputchecker.numberchecker()
+        numberofcrypto = pyip.inputNum()
         cryptoinpurchase = cryptoprice * numberofcrypto
         if crypto_money >= cryptoinpurchase:
             crypto_money = crypto_money - cryptoinpurchase
@@ -311,11 +315,11 @@ def sellcrypto(sellcrypto_crypto, sellcrypto_money):
     sell_crypto_price = randint(100,450)
     print(f'The sell price of poopcoin is: {sell_crypto_price}')
     print('Would you like to sell your poopcoin? Y/N')
-    answer = inputchecker.alpchecker()
+    answer = pyip.inputYesNo()
     answer = answer.lower()
-    if answer == 'y' or answer == 'yes':
+    if answer == 'yes':
         print('Great! How many would you like to sell?')
-        sellamount = inputchecker.numberchecker()
+        sellamount = pyip.inputNum()
         sellamountprice = sellamount * sell_crypto_price
         if sellamount <= sellcrypto_crypto:
             print('OK! Processing request...')
@@ -343,7 +347,7 @@ def billcheck(billcheck_bill, billcheck_money):
         sys.exit()
     else:
         print('Pay the amount stated?')
-        answer = inputchecker.alpchecker()
+        answer = pyip.inputStr()
         answer = answer.lower()
         if answer == 'y' or answer == 'yes':
             if billcheck_money >= billcheck_bill:
@@ -366,4 +370,4 @@ def billcheck(billcheck_bill, billcheck_money):
 #time.sleep(2)
 #bill, money = billcheck(10000, 2)
 
-game()
+
