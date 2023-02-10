@@ -1,1 +1,7 @@
 Economically Idiotic Version update:
+Version 0.6.4:
+---Work update part 2---
+New features:
+- You can now choose modes. Hardcore mode is disabled as it is under works
+- Work: Added part-time and full-time. Full-time is disabled for now
+- Bug fix and changed some naming
