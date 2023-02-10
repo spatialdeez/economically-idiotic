@@ -10,31 +10,54 @@ except:
 
 
 def game():
-    Money = 1000000
+
+    #General
+    Money = 500
     Crypto = 0
     CryptoPerRun = 0
     runsecs = 0
     bill = 0
-    workruntime = 20
-    workpay = 100
 
+    #Exams
     gedpassperc = 30
     diplomapassperc = 25
     degreepassperc = 0
-    phdpassperc = 0
+    masterspassperc = 0
 
+    #Certificates
     gedcert = 0
     diplomacert = 0
     degreecert = 0
-    phdcert = 0
+    masterscert = 0
 
 
-    print('Economically Idiotic, version 0.5.5 by randomchez#8734')
+    print('Economically Idiotic, version 0.7.6 by randomchez#8734')
     print('----------------GAME START----------------')
-    time.sleep(0.5)
-    print('You start with $1000.')
-    time.sleep(3)
 
+    #Lets player choose a mode
+    print('Choose mode:')
+    answer = pyip.inputMenu(['Classic mode (The usual $500 as starting cash)', 'Poor mode (You are broke: start with $0)', 'Creative mode (You have infinite amount of cash)', 'Hardcore mode (You have $0, AND have life expentancy rates)'], lettered=False, numbered=True)
+    if answer == 'Classic mode (The usual $500 as starting cash)':
+        print('Entered: Classic mode')
+    elif answer == 'Poor mode (You are broke: start with $0)':
+        print('Entered: poor mode')
+        print('Initiallzing changes...')
+        Money = 0
+    elif answer == 'Creative mode (You have infinite amount of cash)':
+        print('Entered: Creative mode.')
+        print('Initializing changes...')
+        Money = 9999999999999999999999999999999999999999
+    elif answer == 'Hardcore mode (You have $0, AND have life expentancy rates)':
+        print('YOU, and the user, YOU are about to enter hardcore mode. If you do not know what hardcore mode is \n(Or its your first time playing it), I recommend to read the rules changed (press 1 enter) on the next prompt given.')
+        answer = pyip.inputMenu(['Read the rules', 'Nah, I know what it is'], lettered=True, numbered=False)
+        if answer == 'Read the rules':
+            print('Hardcore mode increases the difficulty of the game. You will zhve another thing added called: life expectancy')
+            print('Life expectancy is the life you have left. Once you reached the life expexctancy rate, you lose')
+            print('But this mode is incomplete, so it will be refered as classic mode for now.')
+            print('If you do not want classic mode, replay this script again and select the mode you wanna play')
+        else:
+            print('this mode is incomplete, so it will be refered as classic mode for now.')
+            print('If you do not want classic mode, replay this script again and select the mode you wanna play')
 
     while True:
         print('Select an Activity:')
@@ -88,8 +111,8 @@ def game():
                 print('--- CRYPTO SECTION (enter item ID. its beside the item)---')
                 print('-1- slow shit gpu (CPS: 1 Price: 500)')
                 print('-2- taco GPU (CPS: 2 Price: 1000)')
-                print('-3- bingchiling GPU (CPS: 5 Price: 4000)')
-                print('-4- GePro 4080 GPU (CPS: 8 price: 7000)')
+                print('-3- GePro RTX 4070 Ti GPU (CPS: 5 Price: 4000)')
+                print('-4- GePro RTX 4080 GPU (CPS: 8 price: 7000)')
                 time.sleep(3)
                 answer = pyip.inputNum()
                 if answer == 1:
@@ -127,7 +150,7 @@ def game():
                         time.sleep(2)
                         continue
                 if answer == 3:
-                    print('so u want to buy bingchiling GPU? It increases per run by 5 secs! --NO REFUND--')
+                    print('so u want to buy GePro RTX 4070 Ti GPU? It increases per run by 5 secs! --NO REFUND--')
                     answer = pyip.inputYesNo()
                     answer = answer.lower()
                     if answer == 'yes':
@@ -162,7 +185,7 @@ def game():
                         continue
             if answer == 5:
                 print(f'Money: {Money} Crypto: {Crypto}')
-                print(f'Certificates:\nGED: {gedcert}\nDiploma: {diplomacert}\nDegree: {degreecert}\nPhD: {phdcert}')
+                print(f'Certificates:\nGED: {gedcert}\nDiploma: {diplomacert}\nDegree: {degreecert}\nPhD: {masterscert}')
         elif answer == 3:
             print('>>> TERMINAL OPEN <<<')
             print('>>> LOADING PROGRAM <<<')
@@ -195,31 +218,42 @@ def game():
                     answer = pyip.inputMenu(['Practise mock tests|+5% GED pass rate ($250)', 'Read past written notes|+6% diploma pass rate ($600)', 'Take tuition and university| Unlocks Degree Exam ($55,000)', 'Take tuition and go to a qualified schoo| Unlocks PhD Exam (100,000)'], lettered=False, numbered=True)
                     if answer == 'Practise mock tests|+5% GED pass rate ($250)':
                         while True:
-                            gedpassperc += 5
-                            Money -= 250
-                            print('Writing...')
-                            time.sleep(1)
-                            print('Press enter to continue studying, but will deduct $250 again and will add +5% pass percentage.')
-                            print('Press a random key then press enter to stop')
-                            answer = input()
-                            if answer == '':
-                                continue
+                            if Money >= 250:
+                                gedpassperc += 5
+                                Money -= 250
+                                print('Writing...')
+                                time.sleep(1)
+                                print('Press enter to continue studying, but will deduct $250 again and will add +5% pass percentage.')
+                                print('Press a random key then press enter to stop')
+                                answer = input()
+                                if answer == '':
+                                    continue
+                                else:
+                                    break
                             else:
-                                break
-                    elif answer == 'Read past written notes|+6% diploma pass rate ($600)':
+                                print('You got no (more) money to study')
+                    elif answer == 'Read past written notes|+6% diploma pass rate ($600)' and Money >= 600:
                         while True:
-                            diplomapassperc += 6
-                            Money -= 600
-                            print('Reading...')
-                            time.sleep(2)
-                            print('Press enter to continue studying, but will deduct $600 again and will add +6% pass percentage.')
-                            print('Press a random key then press enter to stop')
-                            answer = input()
-                            if answer == '':
-                                continue
+                            if Money >= 600:
+                                diplomapassperc += 6
+                                Money -= 600
+                                print('Reading...')
+                                time.sleep(2)
+                                print('Press enter to continue studying, but will deduct $600 again and will add +6% pass percentage.')
+                                print('Press a random key then press enter to stop')
+                                answer = input()
+                                if answer == '':
+                                    continue
+                                else:
+                                    break
                             else:
-                                break
+                                print('You have no (more) money to continue studying.')
+                                continue
                     elif answer == 'Take tuition and university| Unlocks Degree Exam ($55,000)':
+                        if diplomacert == 0:
+                                print('You are not eligible for the univerity yet! Take your diploma exam first.')
+                                continue
+                        elif Money >= 55000:
                             degreepassperc += 100
                             Money -= 55000
                             print('Taking tuition...')
@@ -227,14 +261,21 @@ def game():
                             print('Studying...')
                             time.sleep(3)
                             print('You are now eligible for the degree exam!!!')
-                    elif answer == 'Take tuition and go to a qualified schoo| Unlocks PhD Exam (100,000)':
-                        phdpassperc += 100
-                        Money -= 100000
-                        print('Taking tuition...')
-                        time.sleep(3)
-                        print('Studying...')
-                        time.sleep(3)
-                        print('You are now eligible for the PhD exam!!!')
+                        else:
+                            print('You are broke')
+                    elif answer == 'Take tuition and go to a qualified school| Unlocks Master\'s Exam (100,000)':
+                        if degreecert == 0:
+                            print('Not eligible for the Master\'s qualified school yet. Go take university first!')
+                        elif Money >= 100000:
+                            masterspassperc += 100
+                            Money -= 100000
+                            print('Taking tuition...')
+                            time.sleep(3)
+                            print('Studying...')
+                            time.sleep(3)
+                            print('You are now eligible for the Master\'s exam!!!')
+                        else:
+                            print('You are broke.')
             else:
                 print('Oh well. Good luck!')
             print('Welcome to the exam hall! Choose your exam to register:')
@@ -247,14 +288,14 @@ def game():
             else:
                 degreestr = 'Degree: ready to take the test!'
 
-            if phdpassperc == 0:
-                phdstr = 'PhD: You have to take tuition and go to a qualified school first!!! (click ok when they prompt you to revise)'
-            elif phdcert >= 1:
-                phdstr = 'PhD: You already took the exam'
+            if masterspassperc == 0:
+                mastersstr = 'Master\'s: You have to take tuition and go to a qualified school first!!! (click ok when they prompt you to revise)'
+            elif masterscert >= 1:
+                mastersstr = 'Master\'s: You already took the exam'
             else:
-                phdstr = 'PhD: ready to take the test!'
+                mastersstr = 'Master\'s: ready to take the test!'
 
-            answer = pyip.inputMenu([gedstr, diplomastr, degreestr, phdstr], lettered=False, numbered=True)
+            answer = pyip.inputMenu([gedstr, diplomastr, degreestr, mastersstr], lettered=False, numbered=True)
             if answer == gedstr:
                 random = randint(0,100)
                 Money -= 100
@@ -267,16 +308,20 @@ def game():
                 else:
                     print('Better luck next time.')
             elif answer == diplomastr:
-                random = randint(0,100)
-                Money -= 500
-                print('You took the test.')
-                time.sleep(2)
-                print('You sweat.')
-                if diplomapassperc >= random:
-                    print('You got a Diploma Certificate!!! Congratulations!')
-                    diplomacert += 1
+                if gedcert == 0:
+                    print('Take your GED exam first!')
+                    continue
                 else:
-                    print('Better luck next time.')
+                    random = randint(0,100)
+                    Money -= 500
+                    print('You took the test.')
+                    time.sleep(2)
+                    print('You sweat.')
+                    if diplomapassperc >= random:
+                        print('You got a Diploma Certificate!!! Congratulations!')
+                        diplomacert += 1
+                    else:
+                        print('Better luck next time.')
             elif answer == degreestr:
                 if degreepassperc < 100:
                     print('You are not allowed to take the test yet/again!')
@@ -285,19 +330,77 @@ def game():
                     print('You received your Degree certificate!')
                     degreepassperc = 0
                     degreecert += 1
-            elif answer == phdstr:
-                if phdpassperc < 100:
+            elif answer == mastersstr:
+                if masterspassperc < 100:
                     print('You are not allowed to take the test yet/again!')
                     continue
                 else:
-                    print('You received your Degree certificate!')
-                    phdpassperc = 0
-                    phdcert += 1
+                    print('You received your Master\'s certificate!')
+                    masterspassperc = 0
+                    masterscert += 1
 
 
 
         elif answer == 5:
-            pass
+            print('---WORK---')
+            print('Choose your mode of working:')
+            answer = pyip.inputMenu(('Part-time', 'Full-time'), lettered=False, numbered=True)
+            if answer == 'Part-time':
+                print('Choose your part-time job:')
+                answer = pyip.inputMenu(('Gardener ($5/hr)', 'Handyman ($15/hr)', 'Cleaner ($20/hr)'), lettered=False, numbered=True)
+                if answer == 'Gardener ($5/hr)':
+                    print('How many hours do you like to spend?')
+                    hours = pyip.inputNum()
+                    luck = 100
+                    for i in range(hours):
+                        i += randint (3, 8)
+                    luck -= i
+                    hirerate = randint(0,100)
+                    print(luck)
+                    print(hirerate)
+                    if hirerate <= luck:
+                        print('You\'re hired!')
+                        earnings = hours * 5
+                        Money += earnings
+                        print(f'Earnings: {earnings}')
+                    else:
+                        print('No one would hire you')
+                elif answer == 'Handyman ($15/hr)':
+                    print('How many hours do you like to spend?')
+                    hours = pyip.inputNum()
+                    luck = 100
+                    for i in range(hours):
+                        i += randint (7, 20)
+                    luck -= i
+                    hirerate = randint(0,100)
+                    print(luck)
+                    print(hirerate)
+                    if hirerate <= luck:
+                        print('You\'re hired!')
+                        earnings = hours * 15
+                        Money += earnings
+                        print(f'Earnings: {earnings}')
+                    else:
+                        print('No one would hire you')
+                if answer == 'Cleaner ($20/hr)':
+                    print('How many hours do you like to spend?')
+                    hours = pyip.inputNum()
+                    luck = 100
+                    for i in range(hours):
+                        i += randint (12, 30)
+                    luck -= i
+                    hirerate = randint(0,100)
+                    print(luck)
+                    print(hirerate)
+                    if hirerate <= luck:
+                        print('You\'re hired!')
+                        earnings = hours * 20
+                        Money += earnings
+                        print(f'Earnings: {earnings}')
+                    else:
+                        print('No one would hire you')
+            elif answer == 'Full-time':
+                print('Full-time not available now')
         elif answer == 6:
             print('Welcome to the lottery!')
             print('How to play: You will be prompted to write in 4 numbers. (Please Only enter numbers between 1 to 10, or the psooibility of you winning will decrease!!!)')
