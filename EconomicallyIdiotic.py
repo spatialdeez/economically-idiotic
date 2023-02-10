@@ -356,8 +356,6 @@ def game():
                         i += randint (3, 8)
                     luck -= i
                     hirerate = randint(0,100)
-                    print(luck)
-                    print(hirerate)
                     if hirerate <= luck:
                         print('You\'re hired!')
                         earnings = hours * 5
@@ -373,8 +371,6 @@ def game():
                         i += randint (7, 20)
                     luck -= i
                     hirerate = randint(0,100)
-                    print(luck)
-                    print(hirerate)
                     if hirerate <= luck:
                         print('You\'re hired!')
                         earnings = hours * 15
@@ -390,8 +386,6 @@ def game():
                         i += randint (12, 30)
                     luck -= i
                     hirerate = randint(0,100)
-                    print(luck)
-                    print(hirerate)
                     if hirerate <= luck:
                         print('You\'re hired!')
                         earnings = hours * 20
