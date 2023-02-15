@@ -32,10 +32,15 @@ def game():
 
     #Work
     currentjob = ''
+    fulltimesalary = 0
+
     tieronejobs = ['Fast Food crew ', 'Stocker ', 'Cashier ', 'Musician ', 'Cleaner ', 'Cook ']
     tiertwojobs = ['Manager ', 'Sales rep ', 'Teacher ', 'Engineer ', 'Police ']
     tierthreejobs = ['Accountant ', 'Banker' , 'Lawyer ','CEO ', 'Doctor ']
-    joblist = ''
+
+    chosentierone = ''
+    chosentiertwo = ''
+    chosentierthree = ''
 
     print('Economically Idiotic, version 0.7.6 by randomchez#8734')
     print('----------------GAME START----------------')
@@ -49,10 +54,14 @@ def game():
         print('Entered: poor mode')
         print('Initiallzing changes...')
         Money = 0
-    elif answer == 'Creative mode (You have infinite amount of cash)':
+    elif answer == 'Creative mode (You have infinite amount of cash and all)':
         print('Entered: Creative mode.')
         print('Initializing changes...')
         Money = 9999999999999999999999999999999999999999
+        gedcert = 1
+        diplomacert = 1
+        degreecert = 1
+        masterscert = 1
     elif answer == 'Hardcore mode (You have $0, AND have life expentancy rates)':
         print('YOU, and the user, YOU are about to enter hardcore mode. If you do not know what hardcore mode is \n(Or its your first time playing it), I recommend to read the rules changed (press 1 enter) on the next prompt given.')
         answer = pyip.inputMenu(['Read the rules', 'Nah, I know what it is'], lettered=True, numbered=False)
@@ -401,40 +410,51 @@ def game():
                         print('No one would hire you')
             elif answer == 'Full-time':
                 print('---Full time---')
-                if diplomacert == 1:
+                if diplomacert >= 1:
                     print('Requires a diploma (At least)')
                 else:
-                    answer = pyip.inputMenu(('Find a job', 'Check your current job'), lettered=False, numbered=True)
+                    answer = pyip.inputMenu(('Find a job', 'Work at your current job'), lettered=False, numbered=True)
                     if answer == 'Find a job':
                         print('Would you like to find a job online? You might find better paying jobs! (-$350)')
                         answer = pyip.inputYesNo()
                         if answer == 'yes':
-                            if diplomacert == 1:
-                                for i in range(randint(1,3)):
-                                    randomnum = randint(0,3)
-                                    joblist += tieronejobs[randomnum]
-                            if degreecert == 1:
-                                randomnum = randint(0,2)
-                                joblist += tiertwojobs[randomnum]
-                            if masterscert == 1:
-                                randomnum = randint(0,1)
-                                joblist += tierthreejobs[randomnum]
-                        else:
-                            if diplomacert == 1:
-                                for i in range(randint(1,2)):
-                                    randomnum = randint(0,2)
-                                    joblist += tieronejobs[randomnum]
-                            if degreecert == 1:
-                                randomnum = randint(0,2)
-                                joblist += tiertwojobs[randomnum]
-                            if masterscert == 1:
-                                randomnum = randint(0,0.25)
-                                if randomnum <= 0.25:
-                                    joblist += tierthreejobs[randomnum]
+                            print('Ok... Searching for a job...')
+                            if diplomacert >= 1 and degreecert >= 0 and masterscert >= 0:
+                                randomnum = randint(0,5)
+                                chosentierone = tieronejobs[randomnum]
+                                print(f'Job picked: {chosentierone}')
+                                pickedjob = chosentierone
+                                pickedsalary = randint(850, 1500)
+                            elif diplomacert >= 1 and degreecert >= 1 and masterscert >= 0:
+                                randomnum = randint(0,4)
+                                chosentiertwo = tiertwojobs[randomnum]
+                                print(f'Job picked: {chosentiertwo}')
+                                pickedjob = chosentiertwo
+                                pickedsalary = randint(2000,3500)
+                            elif masterscert >= 1:
+                                randomnum = randint(0,4)
+                                chosentierthree = tierthreejobs[randomnum]
+                                print(f'Job picked: {chosentierthree}')
+                                pickedjob = chosentierthree
+                                pickedsalary = randint(4000, 5500)
+
+
+                            print('Accept job offer?')
+                            answer = pyip.inputYesNo()
+                            if answer == 'yes':
+                                currentjob = pickedjob
+                                fulltimesalary = pickedsalary
+                                print('Good choice!')
+                                if currentjob == '':
+                                    print(f'Your job: {currentjob}')
+                                    print(f'Your salary: {fulltimesalary}')
                                 else:
-                                    pass
-                    joblist = joblist.split(' ')
-                    print(joblist)
+                                    print(f'Job switched: {currentjob}')
+                                    print(f'Your new salary: {fulltimesalary}')
+                            else:
+                                print('Sorry that we cound not meet your requirements!')
+                        else:
+                            pass
 
 
         elif answer == 6:
