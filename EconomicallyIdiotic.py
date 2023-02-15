@@ -30,6 +30,12 @@ def game():
     degreecert = 0
     masterscert = 0
 
+    #Work
+    currentjob = ''
+    tieronejobs = ['Fast Food crew ', 'Stocker ', 'Cashier ', 'Musician ', 'Cleaner ', 'Cook ']
+    tiertwojobs = ['Manager ', 'Sales rep ', 'Teacher ', 'Engineer ', 'Police ']
+    tierthreejobs = ['Accountant ', 'Banker' , 'Lawyer ','CEO ', 'Doctor ']
+    joblist = ''
 
     print('Economically Idiotic, version 0.7.6 by randomchez#8734')
     print('----------------GAME START----------------')
@@ -215,7 +221,7 @@ def game():
             answer = pyautogui.confirm('You are given a chance to revise before the exam. Proceed?')
             if answer == 'OK':
                     print('Choose your revision method:')
-                    answer = pyip.inputMenu(['Practise mock tests|+5% GED pass rate ($250)', 'Read past written notes|+6% diploma pass rate ($600)', 'Take tuition and university| Unlocks Degree Exam ($55,000)', 'Take tuition and go to a qualified schoo| Unlocks PhD Exam (100,000)'], lettered=False, numbered=True)
+                    answer = pyip.inputMenu(['Practise mock tests|+5% GED pass rate ($250)', 'Read past written notes|+6% diploma pass rate ($600)', 'Take tuition and university| Unlocks Degree Exam ($55,000)', 'Take tuition and go to a qualified school| Unlocks Master\'s Exam (100,000)'], lettered=False, numbered=True)
                     if answer == 'Practise mock tests|+5% GED pass rate ($250)':
                         while True:
                             if Money >= 250:
@@ -394,7 +400,43 @@ def game():
                     else:
                         print('No one would hire you')
             elif answer == 'Full-time':
-                print('Full-time not available now')
+                print('---Full time---')
+                if diplomacert == 1:
+                    print('Requires a diploma (At least)')
+                else:
+                    answer = pyip.inputMenu(('Find a job', 'Check your current job'), lettered=False, numbered=True)
+                    if answer == 'Find a job':
+                        print('Would you like to find a job online? You might find better paying jobs! (-$350)')
+                        answer = pyip.inputYesNo()
+                        if answer == 'yes':
+                            if diplomacert == 1:
+                                for i in range(randint(1,3)):
+                                    randomnum = randint(0,3)
+                                    joblist += tieronejobs[randomnum]
+                            if degreecert == 1:
+                                randomnum = randint(0,2)
+                                joblist += tiertwojobs[randomnum]
+                            if masterscert == 1:
+                                randomnum = randint(0,1)
+                                joblist += tierthreejobs[randomnum]
+                        else:
+                            if diplomacert == 1:
+                                for i in range(randint(1,2)):
+                                    randomnum = randint(0,2)
+                                    joblist += tieronejobs[randomnum]
+                            if degreecert == 1:
+                                randomnum = randint(0,2)
+                                joblist += tiertwojobs[randomnum]
+                            if masterscert == 1:
+                                randomnum = randint(0,0.25)
+                                if randomnum <= 0.25:
+                                    joblist += tierthreejobs[randomnum]
+                                else:
+                                    pass
+                    joblist = joblist.split(' ')
+                    print(joblist)
+
+
         elif answer == 6:
             print('Welcome to the lottery!')
             print('How to play: You will be prompted to write in 4 numbers. (Please Only enter numbers between 1 to 10, or the psooibility of you winning will decrease!!!)')
