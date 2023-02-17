@@ -32,6 +32,7 @@ def game():
 
     #Work
     currentjob = ''
+    jobtier = 0
     fulltimesalary = 0
 
     tieronejobs = ['Fast Food crew ', 'Stocker ', 'Cashier ', 'Musician ', 'Cleaner ', 'Cook ']
@@ -415,9 +416,6 @@ def game():
                 else:
                     answer = pyip.inputMenu(('Find a job', 'Work at your current job'), lettered=False, numbered=True)
                     if answer == 'Find a job':
-                        print('Would you like to find a job online? You might find better paying jobs! (-$350)')
-                        answer = pyip.inputYesNo()
-                        if answer == 'yes':
                             print('Ok... Searching for a job...')
                             if diplomacert >= 1 and degreecert >= 0 and masterscert >= 0:
                                 randomnum = randint(0,5)
@@ -425,18 +423,21 @@ def game():
                                 print(f'Job picked: {chosentierone}')
                                 pickedjob = chosentierone
                                 pickedsalary = randint(850, 1500)
+                                pickedtier = 1
                             elif diplomacert >= 1 and degreecert >= 1 and masterscert >= 0:
                                 randomnum = randint(0,4)
                                 chosentiertwo = tiertwojobs[randomnum]
                                 print(f'Job picked: {chosentiertwo}')
                                 pickedjob = chosentiertwo
                                 pickedsalary = randint(2000,3500)
+                                pickedtier = 2
                             elif masterscert >= 1:
                                 randomnum = randint(0,4)
                                 chosentierthree = tierthreejobs[randomnum]
                                 print(f'Job picked: {chosentierthree}')
                                 pickedjob = chosentierthree
                                 pickedsalary = randint(4000, 5500)
+                                pickedtier = 3
 
 
                             print('Accept job offer?')
@@ -453,8 +454,18 @@ def game():
                                     print(f'Your new salary: {fulltimesalary}')
                             else:
                                 print('Sorry that we cound not meet your requirements!')
+                    elif answer == 'Work at your current job':
+                        if currentjob == '':
+                            print('YOu do not have a job yet!')
                         else:
-                            pass
+                            print('ok')
+                            if jobtier == 1:
+                                pass
+                            elif jobtier == 2:
+                                pass
+                            elif jobtier == 3:
+                                pass
+                            
 
 
         elif answer == 6:
