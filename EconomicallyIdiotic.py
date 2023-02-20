@@ -15,7 +15,6 @@ def game():
     Money = 500
     Crypto = 0
     CryptoPerRun = 0
-    runsecs = 0
     bill = 0
 
     #Exams
@@ -63,6 +62,9 @@ def game():
         diplomacert = 1
         degreecert = 1
         masterscert = 1
+
+        currentjob = 'The pure job'
+        fulltimesalary = 9999999999999999999999999999999999999999999
     elif answer == 'Hardcore mode (You have $0, AND have life expentancy rates)':
         print('YOU, and the user, YOU are about to enter hardcore mode. If you do not know what hardcore mode is \n(Or its your first time playing it), I recommend to read the rules changed (press 1 enter) on the next prompt given.')
         answer = pyip.inputMenu(['Read the rules', 'Nah, I know what it is'], lettered=True, numbered=False)
@@ -80,37 +82,7 @@ def game():
         print('''(1) go to the market\n(2) check your idiotic phone\n(3) mine some crypto\n(4) Try the exams\n(5) Work for money\n(6) Go to the lottery''')
         answer = pyip.inputNum()
         if answer == 1:
-            '''print('welcome to the market. Please check what you would like to buy.')
-            print('1. Energy drink: $250 (Why...)\n2. Ticket: $10 (Wonder what it is used for...)\n')
-            answer = pyip.inputNum()
-            if answer == 1:
-                Money -= 250
-                print('ok sure')
-                time.sleep(1)
-                print('You drank the energy drink...')
-                time.sleep(1)
-                print('You feel that power in you...')
-                time.sleep(2)
-                ignorethisvarjk = randint(1, 10)
-                if ignorethisvarjk == 1 or ignorethisvarjk == 3 or ignorethisvarjk == 5 or ignorethisvarjk == 7 or ignorethisvarjk == 9:
-                    print('...and nothing happened!')
-                else:
-                    print('...and deducted your work time! Yay!')
-                    workruntime -= ignorethisvarjk'''
-
-            if answer == 2:
-                Money -= 10
-                print('Playing slot machine now!')
-                time.sleep(1)
-                slotone = randint(1,10)
-                slottwo = randint(1,10)
-                slotthree = randint(1,10)
-                print('Annnnnnnndddddd.......')
-                if slotone == slottwo == slotthree:
-                    print('JACKPOT!')
-                    print('You got some money. (Use it on lottery since your luck is good ;)')
-                else:
-                    print('Aw man. better luck next time!')
+            pass
 
         elif answer == 2:
             print('hi welcome to your phone.')
@@ -417,19 +389,21 @@ def game():
                     answer = pyip.inputMenu(('Find a job', 'Work at your current job'), lettered=False, numbered=True)
                     if answer == 'Find a job':
                             print('Ok... Searching for a job...')
-                            if diplomacert >= 1 and degreecert >= 0 and masterscert >= 0:
+                            if degreecert == 0 and masterscert == 0:
                                 randomnum = randint(0,5)
                                 chosentierone = tieronejobs[randomnum]
                                 print(f'Job picked: {chosentierone}')
                                 pickedjob = chosentierone
                                 pickedsalary = randint(850, 1500)
+                                print(f'Salary: {pickedsalary}')
                                 pickedtier = 1
-                            elif diplomacert >= 1 and degreecert >= 1 and masterscert >= 0:
+                            elif masterscert == 0:
                                 randomnum = randint(0,4)
                                 chosentiertwo = tiertwojobs[randomnum]
                                 print(f'Job picked: {chosentiertwo}')
                                 pickedjob = chosentiertwo
                                 pickedsalary = randint(2000,3500)
+                                print(f'Salary: {pickedsalary}')
                                 pickedtier = 2
                             elif masterscert >= 1:
                                 randomnum = randint(0,4)
@@ -437,6 +411,7 @@ def game():
                                 print(f'Job picked: {chosentierthree}')
                                 pickedjob = chosentierthree
                                 pickedsalary = randint(4000, 5500)
+                                print(f'Salary: {pickedsalary}')
                                 pickedtier = 3
 
 
@@ -446,6 +421,7 @@ def game():
                                 currentjob = pickedjob
                                 fulltimesalary = pickedsalary
                                 print('Good choice!')
+                                jobtier = pickedtier
                                 if currentjob == '':
                                     print(f'Your job: {currentjob}')
                                     print(f'Your salary: {fulltimesalary}')
@@ -460,7 +436,41 @@ def game():
                         else:
                             print('ok')
                             if jobtier == 1:
-                                pass
+                                print('---WORK---')
+                                print('Ctrl + c to stop working')
+                                questions = randint(10,20)
+                                try:
+                                    questionnumber = 1
+                                    for i in range(questionnumber):
+                                        if questionnumber == 1:
+                                            print('A customer came on your desk and asked for a refund.')
+                                            print('TASK: find the correct letter to click and press enter (in under 1 secs)')
+                                            alphabets = ['z', 'x', 'f', 'd', 'g']
+                                            alphabets = alphabets[randint(0,4)]
+                                            print('3')
+                                            time.sleep(1)
+                                            print('2')
+                                            time.sleep(1)
+                                            print('1')
+                                            time.sleep(1)
+                                            print('START!!!')
+                                            timerone = time.time()
+                                            print(alphabets)
+                                            answer = input('> ')
+                                            timertwo = time.time()
+                                            if answer == alphabets and timertwo - timerone <= 1:
+                                                print('Well done!')
+                                            elif answer != alphabets:
+                                                print('Wrong key!')
+                                                raise Exception
+                                            else:
+                                                print('you did not did it in 1 second! You failed!')
+                                                raise Exception
+                                            
+                                except:
+                                    print('You left the workspace')
+
+
                             elif jobtier == 2:
                                 pass
                             elif jobtier == 3:
