@@ -440,7 +440,7 @@ def game():
                                 print('Ctrl + c to stop working')
                                 questions = randint(10,20)
                                 try:
-                                    questionnumber = 1
+                                    questionnumber = 2
                                     for i in range(questionnumber):
                                         if questionnumber == 1:
                                             print('A customer came on your desk and asked for a refund.')
@@ -466,6 +466,33 @@ def game():
                                             else:
                                                 print('you did not did it in 1 second! You failed!')
                                                 raise Exception
+                                        if questionnumber == 2:
+                                            blocknum = randint(1,100)
+                                            print(f'You have received a order to deliver some items to building {blocknum}.')
+                                            print('How to play:')
+                                            print('You willbe given a location. Type y if its the block else, press n')
+                                            print('Your time-limit for each location is 2 seconds.')
+                                            print(f'Locate building {blocknum}. Starting in 3 seconds...')
+                                            time.sleep(3)
+                                            while True:
+                                                time.sleep(randint(1,3))
+                                                blockrandom = randint(1,100)
+                                                timerone = time.time()
+                                                print('Block found!')
+                                                print(f'!@@#$!@{blockrandom}@$@#$!')
+                                                if blockrandom == blocknum:
+                                                    realblockanswer = 'y'
+                                                else:
+                                                    realblockanswer = 'n'
+                                                answer = pyip.inputYesNo()
+                                                if answer == realblockanswer:
+                                                    print('The customer was satisfied with your service!')
+                                                    break
+                                                else:
+                                                    print(f'The person of block {blockrandom} took the items.')
+                                                    print('The real customer was angry! You failed to complete yur job.')
+                                                    raise Exception
+                                            print('Finished task!')
                                             
                                 except:
                                     print('You left the workspace')
