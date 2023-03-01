@@ -34,13 +34,7 @@ def game():
     jobtier = 0
     fulltimesalary = 0
 
-    tieronejobs = ['Fast Food crew ', 'Stocker ', 'Cashier ', 'Musician ', 'Cleaner ', 'Cook ']
-    tiertwojobs = ['Manager ', 'Sales rep ', 'Teacher ', 'Engineer ', 'Police ']
-    tierthreejobs = ['Accountant ', 'Banker' , 'Lawyer ','CEO ', 'Doctor ']
-
-    chosentierone = ''
-    chosentiertwo = ''
-    chosentierthree = ''
+    jobs = ['Fast Food crew ', 'Stocker ', 'Cashier ', 'Musician ', 'Cleaner ', 'Cook ','Manager ', 'Sales rep ', 'Teacher ', 'Engineer ', 'Police ', 'Accountant ', 'Banker' , 'Lawyer ','CEO ', 'Doctor ']
 
     print('Economically Idiotic, version 0.7.6 by randomchez#8734')
     print('----------------GAME START----------------')
@@ -174,6 +168,9 @@ def game():
             if answer == 5:
                 print(f'Money: {Money} Crypto: {Crypto}')
                 print(f'Certificates:\nGED: {gedcert}\nDiploma: {diplomacert}\nDegree: {degreecert}\nPhD: {masterscert}')
+                print('Current job:')
+                print(currentjob)
+                print(fulltimesalary)
         elif answer == 3:
             print('>>> TERMINAL OPEN <<<')
             print('>>> LOADING PROGRAM <<<')
@@ -389,30 +386,17 @@ def game():
                     answer = pyip.inputMenu(('Find a job', 'Work at your current job'), lettered=False, numbered=True)
                     if answer == 'Find a job':
                             print('Ok... Searching for a job...')
-                            if degreecert == 0 and masterscert == 0:
-                                randomnum = randint(0,5)
-                                chosentierone = tieronejobs[randomnum]
-                                print(f'Job picked: {chosentierone}')
-                                pickedjob = chosentierone
-                                pickedsalary = randint(850, 1500)
-                                print(f'Salary: {pickedsalary}')
-                                pickedtier = 1
-                            elif masterscert == 0:
-                                randomnum = randint(0,4)
-                                chosentiertwo = tiertwojobs[randomnum]
-                                print(f'Job picked: {chosentiertwo}')
-                                pickedjob = chosentiertwo
-                                pickedsalary = randint(2000,3500)
-                                print(f'Salary: {pickedsalary}')
-                                pickedtier = 2
-                            elif masterscert >= 1:
-                                randomnum = randint(0,4)
-                                chosentierthree = tierthreejobs[randomnum]
-                                print(f'Job picked: {chosentierthree}')
-                                pickedjob = chosentierthree
-                                pickedsalary = randint(4000, 5500)
-                                print(f'Salary: {pickedsalary}')
-                                pickedtier = 3
+                            time.sleep(randint(2,3))
+                            print('Job found!!!')
+                            pickedjob = jobs[randint(0,15)]
+                            pickedsalary = randint(100, 1000)
+                            if diplomacert >= 1:
+                                pickedsalary += randint(200,500)
+                            if degreecert >= 1:
+                                pickedsalary += randint(1000, 1500)
+                            if masterscert >= 1:
+                                pickedsalary += randint(1200, 1500)
+                                
 
 
                             print('Accept job offer?')
@@ -421,7 +405,6 @@ def game():
                                 currentjob = pickedjob
                                 fulltimesalary = pickedsalary
                                 print('Good choice!')
-                                jobtier = pickedtier
                                 if currentjob == '':
                                     print(f'Your job: {currentjob}')
                                     print(f'Your salary: {fulltimesalary}')
@@ -480,18 +463,18 @@ def game():
                                                 timerone = time.time()
                                                 print('Block found!')
                                                 print(f'!@@#$!@{blockrandom}@$@#$!')
-                                                if blockrandom == blocknum:
-                                                    realblockanswer = 'y'
-                                                else:
-                                                    realblockanswer = 'n'
                                                 answer = pyip.inputYesNo()
-                                                if answer == realblockanswer:
+                                                print(answer)
+                                                if blockrandom == blocknum:
                                                     print('The customer was satisfied with your service!')
                                                     break
                                                 else:
-                                                    print(f'The person of block {blockrandom} took the items.')
-                                                    print('The real customer was angry! You failed to complete yur job.')
-                                                    raise Exception
+                                                    if blockrandom == blocknum:
+                                                        print('You missed the block! The customer was upset for your service.')
+                                                        raise Exception
+                                                    else:
+                                                        print('Locating...')
+
                                             print('Finished task!')
                                             
                                 except:
