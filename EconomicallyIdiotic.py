@@ -418,73 +418,68 @@ def game():
                             print('YOu do not have a job yet!')
                         else:
                             print('ok')
-                            if jobtier == 1:
-                                print('---WORK---')
-                                print('Ctrl + c to stop working')
-                                questions = randint(10,20)
-                                try:
-                                    questionnumber = 2
-                                    for i in range(questionnumber):
-                                        if questionnumber == 1:
-                                            print('A customer came on your desk and asked for a refund.')
-                                            print('TASK: find the correct letter to click and press enter (in under 1 secs)')
-                                            alphabets = ['z', 'x', 'f', 'd', 'g']
-                                            alphabets = alphabets[randint(0,4)]
-                                            print('3')
-                                            time.sleep(1)
-                                            print('2')
-                                            time.sleep(1)
-                                            print('1')
-                                            time.sleep(1)
-                                            print('START!!!')
+
+                            print('---WORK---')
+                            print('Ctrl + c to stop working')
+                            questions = randint(10,20)
+                            try:
+                                questionnumber = randint(1,2)
+                                for i in range(questionnumber):
+                                    if questionnumber == 1:
+                                        print('A customer came on your desk and asked for a refund.')
+                                        print('TASK: find the correct letter to click and press enter (in under 1 secs)')
+                                        alphabets = ['z', 'x', 'f', 'd', 'g']
+                                        alphabets = alphabets[randint(0,4)]
+                                        print('3')
+                                        time.sleep(1)
+                                        print('2')
+                                        time.sleep(1)
+                                        print('1')
+                                        time.sleep(1)
+                                        print('START!!!')
+                                        print(alphabets)
+                                        timerone = time.time()                                            
+                                        answer = input('>')
+                                        timertwo = time.time()
+                                        if answer == alphabets and timertwo - timerone <= 1:
+                                            print('Well done!')
+                                        elif answer != alphabets:
+                                            print('Wrong key!')
+                                            raise Exception
+                                        else:
+                                            print('you did not did it in 1 second! You failed!')
+                                            raise Exception
+                                    if questionnumber == 2:
+                                        blocknum = randint(1,100)
+                                        print(f'You have received a order to deliver some items to building {blocknum}.')
+                                        print('How to play:')
+                                        print('You willbe given a location. Type y if its the block else, press n')
+                                        print('Your time-limit for each location is 2 seconds.')
+                                        print(f'Locate building {blocknum}. Starting in 3 seconds...')
+                                        time.sleep(3)
+                                        while True:
+                                            time.sleep(randint(1,3))
+                                            blockrandom = randint(1,100)
                                             timerone = time.time()
-                                            print(alphabets)
-                                            answer = input('> ')
-                                            timertwo = time.time()
-                                            if answer == alphabets and timertwo - timerone <= 1:
-                                                print('Well done!')
-                                            elif answer != alphabets:
-                                                print('Wrong key!')
-                                                raise Exception
+                                            print('Block found!')
+                                            print(f'!@@#$!@{blockrandom}@$@#$!')
+                                            answer = pyip.inputYesNo()
+                                            print(answer)
+                                            if blockrandom == blocknum:
+                                                print('The customer was satisfied with your service!')
+                                                break
                                             else:
-                                                print('you did not did it in 1 second! You failed!')
-                                                raise Exception
-                                        if questionnumber == 2:
-                                            blocknum = randint(1,100)
-                                            print(f'You have received a order to deliver some items to building {blocknum}.')
-                                            print('How to play:')
-                                            print('You willbe given a location. Type y if its the block else, press n')
-                                            print('Your time-limit for each location is 2 seconds.')
-                                            print(f'Locate building {blocknum}. Starting in 3 seconds...')
-                                            time.sleep(3)
-                                            while True:
-                                                time.sleep(randint(1,3))
-                                                blockrandom = randint(1,100)
-                                                timerone = time.time()
-                                                print('Block found!')
-                                                print(f'!@@#$!@{blockrandom}@$@#$!')
-                                                answer = pyip.inputYesNo()
-                                                print(answer)
                                                 if blockrandom == blocknum:
-                                                    print('The customer was satisfied with your service!')
-                                                    break
+                                                    print('You missed the block! The customer was upset for your service.')
+                                                    raise Exception
                                                 else:
-                                                    if blockrandom == blocknum:
-                                                        print('You missed the block! The customer was upset for your service.')
-                                                        raise Exception
-                                                    else:
-                                                        print('Locating...')
+                                                    print('Locating...')
 
-                                            print('Finished task!')
+                                        print('Finished task!')
                                             
-                                except:
-                                    print('You left the workspace')
+                            except:
+                                print('You left the workspace')
 
-
-                            elif jobtier == 2:
-                                pass
-                            elif jobtier == 3:
-                                pass
                             
 
 
