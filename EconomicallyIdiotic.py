@@ -600,13 +600,13 @@ def game():
 
                             print('---WORK---')
                             print('Ctrl + c to stop working')
-                            questions = randint(10,20)
                             try:
-                                questionnumber = randint(1,2)
-                                for i in range(questionnumber):
+                                questions = randint(1,3)
+                                for i in range(questions):
+                                    questionnumber = randint(1,3)
                                     if questionnumber == 1:
-                                        print('A customer came on your desk and asked for a refund.')
-                                        print('TASK: find the correct letter to click and press enter (in under 1 secs)')
+                                        print('A customer came to your desk and asked for a refund.')
+                                        print('TASK: find the correct letter to click and press enter (in under 2 secs)')
                                         alphabets = ['z', 'x', 'f', 'd', 'g']
                                         alphabets = alphabets[randint(0,4)]
                                         print('3')
@@ -620,16 +620,16 @@ def game():
                                         timerone = time.time()                                            
                                         answer = input('>')
                                         timertwo = time.time()
-                                        if answer == alphabets and timertwo - timerone <= 1:
+                                        if answer == alphabets and timertwo - timerone <= 2:
                                             print('Well done!')
                                         elif answer != alphabets:
                                             print('Wrong key!')
                                             raise Exception
                                         else:
-                                            print('you did not did it in 1 second! You failed!')
+                                            print('you did not did it in 2 seconds! You failed!')
                                             raise Exception
                                     if questionnumber == 2:
-                                        blocknum = randint(1,20)
+                                        blocknum = randint(1,10)
                                         print(f'You have received a order to deliver some items to building {blocknum}.')
                                         print('How to play:')
                                         print('You willbe given a location. Type y if its the block else, press n')
@@ -638,23 +638,50 @@ def game():
                                         time.sleep(3)
                                         while True:
                                             time.sleep(randint(1,3))
-                                            blockrandom = randint(1,20)
-                                            timerone = time.time()
+                                            blockrandom = randint(1,10)
                                             print('Block found!')
                                             print(f'!@@#$!@{blockrandom}@$@#$!')
                                             answer = pyip.inputYesNo()
-                                            print(answer)
-                                            if blockrandom == blocknum:
-                                                print('The customer was satisfied with your service!')
-                                                break
+                                            if answer == 'yes':
+                                                if blockrandom == blocknum:
+                                                    print('The customer was satisfied with your service!')
+                                                    break
+                                                else:
+                                                    print('Wrong block!')
+                                                    raise Exception
                                             else:
                                                 if blockrandom == blocknum:
-                                                    print('You missed the block! The customer was upset for your service.')
+                                                    print('you missed the block!')
                                                     raise Exception
-                                                else:
-                                                    print('Locating...')
+                                                print('locating...')
+                                                time.sleep(randint(1,3))
+                                                continue
 
                                         print('Finished task!')
+                                    elif  questionnumber == 3:
+                                        print('Financing is important in most jobs, and so')
+                                        print('today\'s task would be MATH!!! (3 seconds to answer each question)')
+                                        print('Starting in 5 seconds...')  
+                                        
+                                        for i in range(5):
+                                            numberone = randint(1,10)
+                                            numbertwo = randint(1,10)
+                                            mathq = numberone + numbertwo
+                                            mathstarttime = time.time()
+                                            print(f'What is {numbertwo} + {numberone}?')
+                                            answer = pyip.inputNum(">")
+                                            mathendtime = time.time()
+                                            if answer == mathq:
+                                                if mathstarttime - mathendtime <= 3:
+                                                    print('Good job!')
+                                                    time.sleep(0.5)
+                                                else:
+                                                    print('You did not do it in 3 seconds!')
+                                                    raise Exception
+                                            else:
+                                                print(f"wrong! the answer is {mathq}. Too Bad!")
+                                                raise Exception
+
 
                                 Money += fulltimesalary            
                                             
