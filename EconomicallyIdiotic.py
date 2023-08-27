@@ -1,4 +1,3 @@
-
 import time
 import sys
 from random import randint
@@ -9,14 +8,49 @@ except:
     print('Hmm, it seems like you have hot installed two of our VERY special modules that will be needed to work the\n magic! Plese enter these into the command line in the terminal: \n pip install PyInputPlus \n pip install PyAutoGUI \n (For mac and linux users please use pip3 rather than pip)')
 
 
+
 def game():
+    
 
     #General
     Money = 500
+    runsecs = 0
     Crypto = 0
     CryptoPerRun = 0
     bill = 0
+    luck = 31
 
+    #financial data (crypto)
+    cryptod1 = 0
+    cryptod2 = 0
+    cryptod3 = 0
+    cryptod4 = 0
+    cryptod5 = 0
+
+    #financial data (stocks)
+    stkd1_pear = 0
+    stkd2_pear = 0
+    stkd3_pear = 0
+    stkd4_pear = 0
+    stkd5_pear = 0
+
+    stkd1_ripoff = 0
+    stkd2_ripoff = 0
+    stkd3_ripoff = 0
+    stkd4_ripoff = 0
+    stkd5_ripoff = 0
+
+    stkd1_ching = 0
+    stkd2_ching = 0
+    stkd3_ching = 0
+    stkd4_ching = 0
+    stkd5_ching = 0
+
+    stkd1_bri = 0
+    stkd2_bri = 0
+    stkd3_bri = 0
+    stkd4_bri =  0
+    stkd5_bri = 0
     #Exams
     gedpassperc = 30
     diplomapassperc = 25
@@ -31,7 +65,6 @@ def game():
 
     #Work
     currentjob = ''
-    jobtier = 0
     fulltimesalary = 0
 
     jobs = ['Fast Food crew ', 'Stocker ', 'Cashier ', 'Musician ', 'Cleaner ', 'Cook ','Manager ', 'Sales rep ', 'Teacher ', 'Engineer ', 'Police ', 'Accountant ', 'Banker' , 'Lawyer ','CEO ', 'Doctor ']
@@ -63,7 +96,7 @@ def game():
         print('YOU, and the user, YOU are about to enter hardcore mode. If you do not know what hardcore mode is \n(Or its your first time playing it), I recommend to read the rules changed (press 1 enter) on the next prompt given.')
         answer = pyip.inputMenu(['Read the rules', 'Nah, I know what it is'], lettered=True, numbered=False)
         if answer == 'Read the rules':
-            print('Hardcore mode increases the difficulty of the game. You will zhve another thing added called: life expectancy')
+            print('Hardcore mode increases the difficulty of the game. You will have another thing added called: life expectancy')
             print('Life expectancy is the life you have left. Once you reached the life expexctancy rate, you lose')
             print('But this mode is incomplete, so it will be refered as classic mode for now.')
             print('If you do not want classic mode, replay this script again and select the mode you wanna play')
@@ -73,19 +106,44 @@ def game():
 
     while True:
         print('Select an Activity:')
-        print('''(1) go to the market\n(2) check your idiotic phone\n(3) mine some crypto\n(4) Try the exams\n(5) Work for money\n(6) Go to the lottery''')
+        print('''(1) crash the stocks (NEW!)\n(2) check your idiotic phone\n(3) mine some crypto\n(4) Try the exams\n(5) Work for money\n(6) Go to the lottery''')
         answer = pyip.inputNum()
         if answer == 1:
-            pass
+            print('stonks,Stonks, STONKS! Charge into the bull market and earn big bucks! (press enter to exit)')
+            time.sleep(2)
+            answer = pyip.inputMenu(['pear stocks', 'not rip off stock', 'ching chong stock', 'bri ish stock'], lettered=False, numbered=True)
+            if answer == 'pear stocks':
+                
+                print('Hi, gladly to meet you. Thnak you for \n investing in pear stocks. We serve customers with the best \n phone and edge-cutting technology.')
+                pearstock = randint(1000,2500)
+                print(f'Our asking price per lot is: {pearstock}')
+                print('pear stocks previous prices')
+                print('Back       | 1 | 2 | 3 | 4 | 5')
+                print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
+                answer = pyip.inputNum('How many lot would you like?')
+                Money = answer * pearstock
+            elif answer == 'not rip off stock':
+                print('pls boiy defininethy not ripp ofkf')
+                ripoffstock = randint(2000,5000)
+                print(f'Our asking price per lot is: {ripoffstock}')
+                print('pear stocks previous prices')
+                print('Back       | 1 | 2 | 3 | 4 | 5')
+                print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_pear} | {stkd5_pear} ')
+            elif answer == 'ching chong stock':
+                pass
+            elif answer == 'bri ish stock':
+                pass
+
+
 
         elif answer == 2:
             print('hi welcome to your phone.')
             print('(1) buy some crypto\n(2) sell your crypto\n(3) pay yur bills\n(4) Order something online lol.\n(5) Check your finances')
             answer = pyip.inputNum()
             if answer == 1:
-                Money, Crypto = cryptopurchase(Money, Crypto)
+                Money, Crypto,cryptod1,cryptod2, cryptod3,cryptod4,cryptod5 = cryptopurchase(Money, Crypto, cryptod1, cryptod2, cryptod3, cryptod4, cryptod5)
             if answer == 2:
-                Money, Crypto = sellcrypto(Crypto, Money)
+                Money, Crypto,cryptod1,cryptod2, cryptod3,cryptod4,cryptod5 = sellcrypto(Crypto, Money, cryptod1, cryptod2, cryptod3, cryptod4, cryptod5)
             if answer == 3:
                 bill, Money = billcheck(bill, Money)
             if answer == 4:
@@ -174,7 +232,11 @@ def game():
         elif answer == 3:
             print('>>> TERMINAL OPEN <<<')
             print('>>> LOADING PROGRAM <<<')
-            print(f'--- RUNTIME: {runsecs} ---')
+            try:
+                print(f'--- RUNTIME: {runsecs} ---')
+            except:
+                print('You have no GPU!')
+                continue
             print('--- Start? (ctrl + c to exit terminal)---')
             try:
                 print('--- START IN 3 SECONDS ---')
@@ -233,7 +295,7 @@ def game():
                                     break
                             else:
                                 print('You have no (more) money to continue studying.')
-                                continue
+                                break
                     elif answer == 'Take tuition and university| Unlocks Degree Exam ($55,000)':
                         if diplomacert == 0:
                                 print('You are not eligible for the univerity yet! Take your diploma exam first.')
@@ -283,6 +345,9 @@ def game():
             answer = pyip.inputMenu([gedstr, diplomastr, degreestr, mastersstr], lettered=False, numbered=True)
             if answer == gedstr:
                 random = randint(0,100)
+                if Money < 100:
+                    print('Uh Oh! looks like you are broke!')
+                    continue
                 Money -= 100
                 print('You took the test.')
                 time.sleep(2)
@@ -298,6 +363,8 @@ def game():
                     continue
                 else:
                     random = randint(0,100)
+                    if Money < 500:
+                        print('No momey, no test')
                     Money -= 500
                     print('You took the test.')
                     time.sleep(2)
@@ -336,11 +403,10 @@ def game():
                 if answer == 'Gardener ($5/hr)':
                     print('How many hours do you like to spend?')
                     hours = pyip.inputNum()
-                    luck = 100
                     for i in range(hours):
-                        i += randint (3, 8)
+                        i += randint (1,3)
                     luck -= i
-                    hirerate = randint(0,100)
+                    hirerate = randint(1,50)
                     if hirerate <= luck:
                         print('You\'re hired!')
                         earnings = hours * 5
@@ -351,11 +417,10 @@ def game():
                 elif answer == 'Handyman ($15/hr)':
                     print('How many hours do you like to spend?')
                     hours = pyip.inputNum()
-                    luck = 100
                     for i in range(hours):
-                        i += randint (7, 20)
+                        i += randint (3,5)
                     luck -= i
-                    hirerate = randint(0,100)
+                    hirerate = randint(1,50)
                     if hirerate <= luck:
                         print('You\'re hired!')
                         earnings = hours * 15
@@ -366,11 +431,10 @@ def game():
                 if answer == 'Cleaner ($20/hr)':
                     print('How many hours do you like to spend?')
                     hours = pyip.inputNum()
-                    luck = 100
                     for i in range(hours):
-                        i += randint (12, 30)
+                        i += randint (5,10)
                     luck -= i
-                    hirerate = randint(0,100)
+                    hirerate = randint(0,50)
                     if hirerate <= luck:
                         print('You\'re hired!')
                         earnings = hours * 20
@@ -389,7 +453,7 @@ def game():
                             time.sleep(randint(2,3))
                             print('Job found!!!')
                             pickedjob = jobs[randint(0,15)]
-                            pickedsalary = randint(100, 1000)
+                            pickedsalary = randint(100, 750)
                             if diplomacert >= 1:
                                 pickedsalary += randint(200,500)
                             if degreecert >= 1:
@@ -450,7 +514,7 @@ def game():
                                             print('you did not did it in 1 second! You failed!')
                                             raise Exception
                                     if questionnumber == 2:
-                                        blocknum = randint(1,100)
+                                        blocknum = randint(1,20)
                                         print(f'You have received a order to deliver some items to building {blocknum}.')
                                         print('How to play:')
                                         print('You willbe given a location. Type y if its the block else, press n')
@@ -459,7 +523,7 @@ def game():
                                         time.sleep(3)
                                         while True:
                                             time.sleep(randint(1,3))
-                                            blockrandom = randint(1,100)
+                                            blockrandom = randint(1,20)
                                             timerone = time.time()
                                             print('Block found!')
                                             print(f'!@@#$!@{blockrandom}@$@#$!')
@@ -476,9 +540,12 @@ def game():
                                                     print('Locating...')
 
                                         print('Finished task!')
+
+                                Money += fulltimesalary            
                                             
                             except:
                                 print('You left the workspace')
+
 
                             
 
@@ -546,12 +613,20 @@ def game():
                     Money += collectlot
                     print(f'Money: {Money}')
 
-def cryptopurchase(crypto_money, crypto_crypto):
+def cryptopurchase(crypto_money, crypto_crypto,d1,d2,d3,d4,d5):
     crypto_crypto = int(crypto_crypto)
     crypto_money = int(crypto_money)
     print('hi welcome to cryptospace. hope u have a nice day.')
     cryptoprice = randint(100,450)
     print(f'the price of poopcoin is {cryptoprice}')
+    print('Previous prices of poopcoin:')
+    print('Back  | 1 | 2 | 3 | 4 | 5')
+    print(f'Price | {d1} | {d2} | {d3} | {d4} | {d5} ')
+    d1 = cryptoprice
+    d2 = d1
+    d3 = d2
+    d4 = d3
+    d5 = d4
     time.sleep(1)
     print('would u like to purhase poopcoin? (Y/N)')
     answer = pyip.inputYesNo()
@@ -573,13 +648,21 @@ def cryptopurchase(crypto_money, crypto_crypto):
     else:
         print('see u next time. bye!')
         time.sleep(2)
-        return crypto_money, crypto_crypto 
+        return crypto_money, crypto_crypto,d1,d2,d3,d4,d5
 
 
-def sellcrypto(sellcrypto_crypto, sellcrypto_money):
+def sellcrypto(sellcrypto_crypto, sellcrypto_money,d1,d2,d3,d4,d5):
     print('Welcome! Sell your crypto here!')
     sell_crypto_price = randint(100,450)
     print(f'The sell price of poopcoin is: {sell_crypto_price}')
+    print('Previous prices of poopcoin:')
+    print('Back  | 1 | 2 | 3 | 4 | 5')
+    print(f'Price | {d1} | {d2} | {d3} | {d4} | {d5} ')
+    d1 = sell_crypto_price
+    d2 = d1
+    d3 = d2
+    d4 = d3
+    d5 = d4
     print('Would you like to sell your poopcoin? Y/N')
     answer = pyip.inputYesNo()
     answer = answer.lower()
@@ -601,7 +684,7 @@ def sellcrypto(sellcrypto_crypto, sellcrypto_money):
             return sellcrypto_money, sellcrypto_crypto
     else:
         print('I see. Bye!')
-        return sellcrypto_money, sellcrypto_crypto
+        return sellcrypto_money, sellcrypto_crypto,d1,d2,d3,d4,d5
 
 
 def billcheck(billcheck_bill, billcheck_money):
@@ -636,4 +719,3 @@ def billcheck(billcheck_bill, billcheck_money):
 #time.sleep(2)
 #bill, money = billcheck(10000, 2)
 game()
-
