@@ -18,7 +18,7 @@ def game():
     Crypto = 0
     CryptoPerRun = 0
     bill = 0
-    luck = 31
+    luck = 100
 
     #financial data (crypto)
     cryptod1 = 0
@@ -392,7 +392,8 @@ def game():
                                 else:
                                     break
                             else:
-                                print('You got no (more) money to study')
+                                print('no money to study')
+                                break
                     elif answer == 'Read past written notes|+6% diploma pass rate ($600)' and Money >= 600:
                         while True:
                             if Money >= 600:
@@ -408,7 +409,7 @@ def game():
                                 else:
                                     break
                             else:
-                                print('You have no (more) money to continue studying.')
+                                print('no money to study')
                                 break
                     elif answer == 'Take tuition and university| Unlocks Degree Exam ($55,000)':
                         if diplomacert == 0:
@@ -518,9 +519,9 @@ def game():
                     print('How many hours do you like to spend?')
                     hours = pyip.inputNum()
                     for i in range(hours):
-                        i += randint (1,3)
+                        i += randint (5,30)
                     luck -= i
-                    hirerate = randint(1,50)
+                    hirerate = randint(1,100)
                     if hirerate <= luck:
                         print('You\'re hired!')
                         earnings = hours * 5
@@ -532,7 +533,7 @@ def game():
                     print('How many hours do you like to spend?')
                     hours = pyip.inputNum()
                     for i in range(hours):
-                        i += randint (3,5)
+                        i += randint (15,30)
                     luck -= i
                     hirerate = randint(1,50)
                     if hirerate <= luck:
@@ -546,7 +547,7 @@ def game():
                     print('How many hours do you like to spend?')
                     hours = pyip.inputNum()
                     for i in range(hours):
-                        i += randint (5,10)
+                        i += randint (20,35)
                     luck -= i
                     hirerate = randint(0,50)
                     if hirerate <= luck:
