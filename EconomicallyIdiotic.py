@@ -28,29 +28,27 @@ def game():
     cryptod5 = 0
 
     #financial data (stocks)
+    pearstockamt = 0
     stkd1_pear = 0
     stkd2_pear = 0
     stkd3_pear = 0
     stkd4_pear = 0
     stkd5_pear = 0
 
+    ripoffstockamt = 0
     stkd1_ripoff = 0
     stkd2_ripoff = 0
     stkd3_ripoff = 0
     stkd4_ripoff = 0
     stkd5_ripoff = 0
 
+    chingstockamt = 0
     stkd1_ching = 0
     stkd2_ching = 0
     stkd3_ching = 0
     stkd4_ching = 0
     stkd5_ching = 0
 
-    stkd1_bri = 0
-    stkd2_bri = 0
-    stkd3_bri = 0
-    stkd4_bri =  0
-    stkd5_bri = 0
     #Exams
     gedpassperc = 30
     diplomapassperc = 25
@@ -109,30 +107,146 @@ def game():
         print('''(1) crash the stocks (NEW!)\n(2) check your idiotic phone\n(3) mine some crypto\n(4) Try the exams\n(5) Work for money\n(6) Go to the lottery''')
         answer = pyip.inputNum()
         if answer == 1:
-            print('stonks,Stonks, STONKS! Charge into the bull market and earn big bucks! (press enter to exit)')
+            stocks_wanted = 0
+            print('stonks,Stonks, STONKS! Charge into the bull market and earn big bucks! ')
             time.sleep(2)
-            answer = pyip.inputMenu(['pear stocks', 'not rip off stock', 'ching chong stock', 'bri ish stock'], lettered=False, numbered=True)
-            if answer == 'pear stocks':
+            print('buy or sell stocks?')
+            answer = pyip.inputMenu(['buy','sell', 'bruh shut up i hate stocks (exit)'], lettered=False, numbered=True)
+            if answer == 'buy':
+                answer = pyip.inputMenu(['pear stocks', 'not rip off stock', 'ching chong stock', 'bri ish stock'], lettered=False, numbered=True)
+                if answer == 'pear stocks':
                 
-                print('Hi, gladly to meet you. Thnak you for \n investing in pear stocks. We serve customers with the best \n phone and edge-cutting technology.')
-                pearstock = randint(1000,2500)
-                print(f'Our asking price per lot is: {pearstock}')
-                print('pear stocks previous prices')
-                print('Back       | 1 | 2 | 3 | 4 | 5')
-                print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
-                answer = pyip.inputNum('How many lot would you like?')
-                Money = answer * pearstock
-            elif answer == 'not rip off stock':
-                print('pls boiy defininethy not ripp ofkf')
-                ripoffstock = randint(2000,5000)
-                print(f'Our asking price per lot is: {ripoffstock}')
-                print('pear stocks previous prices')
-                print('Back       | 1 | 2 | 3 | 4 | 5')
-                print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_pear} | {stkd5_pear} ')
-            elif answer == 'ching chong stock':
-                pass
-            elif answer == 'bri ish stock':
-                pass
+                        print('Hi, gladly to meet you. Thnak you for \n investing in pear stocks. We serve customers with the best \n phone and edge-cutting technology.')
+                        pearstock = randint(1000,2500)
+                        print(f'Our asking price per lot is: {pearstock}')
+                        print('pear stocks previous prices')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
+                        answer = pyip.inputNum('How many lot would you like?')
+                        stocks_wanted = answer * pearstock
+                        if Money >= stocks_wanted:
+                            Money -= stocks_wanted
+                            pearstockamt += stocks_wanted
+                        else:
+                            print('too bad. you are broke')
+                        stkd1_pear = pearstock
+                        stkd2_pear = stkd1_pear
+                        stkd3_pear = stkd2_pear
+                        stkd4_pear = stkd3_pear
+                        stkd5_pear = stkd4_pear
+                elif answer == 'not rip off stock':
+                        print('pls boiy defininethy not ripp ofkf')
+                        ripoffstock = randint(2000,5000)
+                        print(f'Our asking price per lot is: {ripoffstock}')
+                        print('pear stocks previous prices')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
+                        answer = pyip.inputNum('How many lot would you like?')
+                        stocks_wanted = answer * ripoffstock
+                        if Money >= stocks_wanted:
+                            Money -= stocks_wanted
+                            ripoffstockamt += stocks_wanted
+                        else:
+                            print('too bad. you are broke')
+                        stkd1_ripoff = ripoffstock
+                        stkd2_ripoff= stkd1_ripoff
+                        stkd3_ripoff= stkd2_ripoff
+                        stkd4_ripoff= stkd3_ripoff
+                        stkd5_ripoff= stkd4_ripoff
+                elif answer == 'ching chong stock':
+                        print('早安，请你买我们的股票。这是最好的股票，别错过！(Good morning, please buy our stock. It is the best stock ever!)')
+                        chingchongstock = randint(3500,5000)
+                        print (f'股票价钱是：{chingchongstock} (our price per lot is: {chingchongstock})')
+                        print(f'股票上个星期的价钱 (stock price previous prices)： ')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
+                        answer = pyip.inputNum('How many lot would you like?')
+                        stocks_wanted = answer * chingchongstock
+                        if Money >= stocks_wanted:
+                            Money -= stocks_wanted
+                            chingstockamt += stocks_wanted
+                        else:
+                            print('too bad. you are broke')
+                        stkd1_ching = chingchongstock
+                        stkd2_ching = stkd1_ching
+                        stkd3_ching = stkd2_ching
+                        stkd4_ching = stkd3_ching
+                        stkd5_ching = stkd4_ching
+
+                elif answer == 'bri ish stock':
+                        print('We sell the creamiest Fish And Chips. So if you want to talk PoSh, buy our stocks now!')
+                        print('oh wait, we dont have a stock 💀')
+                        time.sleep(3)
+            elif answer == 'sell':
+                    answer = pyip.inputMenu(['pear stocks', 'not rip off stock', 'ching chong stock', 'bri ish stock'], lettered=False, numbered=True)
+                    if answer == 'pear stocks':
+                
+                        print('Hi, gladly to meet you. Thnak you for \n investing in pear stocks. We serve customers with the best \n phone and edge-cutting technology.')
+                        pearstock = randint(1000,2500)
+                        print(f'Our asking price per lot is: {pearstock}')
+                        print('pear stocks previous prices')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
+                        answer = pyip.inputNum('How many lot would you like?')
+                        stocks_wanted = answer * pearstock
+                        if Money >= stocks_wanted:
+                            Money += stocks_wanted
+                            pearstockamt -= stocks_wanted
+                        else:
+                            print('too bad. you are broke')
+                        stkd1_pear = pearstock
+                        stkd2_pear = stkd1_pear
+                        stkd3_pear = stkd2_pear
+                        stkd4_pear = stkd3_pear
+                        stkd5_pear = stkd4_pear
+                    elif answer == 'not rip off stock':
+                        print('pls boiy defininethy not ripp ofkf')
+                        ripoffstock = randint(2000,5000)
+                        print(f'Our asking price per lot is: {ripoffstock}')
+                        print('pear stocks previous prices')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
+                        answer = pyip.inputNum('How many lot would you like?')
+                        stocks_wanted = answer * ripoffstock
+                        if ripoffstockamt >= stocks_wanted:
+                            Money += stocks_wanted
+                            ripoffstockamt -= stocks_wanted
+                        else:
+                            print('too bad. you are broke')
+                        stkd1_ripoff = ripoffstock
+                        stkd2_ripoff= stkd1_ripoff
+                        stkd3_ripoff= stkd2_ripoff
+                        stkd4_ripoff= stkd3_ripoff
+                        stkd5_ripoff= stkd4_ripoff
+                    elif answer == 'ching chong stock':
+                        print('早安，请你买我们的股票。这是最好的股票，别错过！(Good morning, please buy our stock. It is the best stock ever!)')
+                        chingchongstock = randint(3500,5000)
+                        print (f'股票价钱是：{chingchongstock} (our price per lot is: {chingchongstock})')
+                        print(f'股票上个星期的价钱 (stock price previous prices)： ')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
+                        answer = pyip.inputNum('How many lot would you like?')
+                        stocks_wanted = answer * chingchongstock
+                        if chingstockamt >= stocks_wanted:
+                            Money += stocks_wanted
+                            chingstockamt -= stocks_wanted
+                        else:
+                            print('too bad. you are broke')
+                        stkd1_ching = chingchongstock
+                        stkd2_ching = stkd1_ching
+                        stkd3_ching = stkd2_ching
+                        stkd4_ching = stkd3_ching
+                        stkd5_ching = stkd4_ching
+
+                    elif answer == 'bri ish stock':
+                        print('We sell the creamiest Fish And Chips. So if you want to talk PoSh, buy our stocks now!')
+                        print('oh wait, we dont have a stock 💀')
+                        time.sleep(3)
+            else:
+                continue
+
+
+            
 
 
 
@@ -252,7 +366,7 @@ def game():
                 print('>>> TERMINAL EXIT <<<')
                 print('Check your bank for changes!')
                 Crypto += CryptoPerRun
-                bill += randint(2,4) * CryptoPerRun
+                bill += randint(20,40) * CryptoPerRun
             except KeyboardInterrupt:
                 print('>>> ERROR: Exception Raised! ctrl + c used! <<<')
                 print('>>> TERMINAL EXIT <<<')
