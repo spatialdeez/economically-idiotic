@@ -1,7 +1,8 @@
 Economically Idiotic Version update:
-Version 0.6.4:
+Version 0.7.1:
 ---Work update part 2---
 New features:
-- You can now choose modes. Hardcore mode is disabled as it is under works
-- Work: Added part-time and full-time. Full-time is disabled for now
-- Bug fix and changed some naming
+- stocks. have fun trading!
+patches:
+-fixed luck system
+- fixed the salary not being given after doing the job
