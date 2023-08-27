@@ -719,3 +719,4 @@ def billcheck(billcheck_bill, billcheck_money):
 #time.sleep(2)
 #bill, money = billcheck(10000, 2)
 game()
+
