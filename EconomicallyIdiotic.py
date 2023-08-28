@@ -120,8 +120,8 @@ def game():
                         pearstock = randint(1000,2500)
                         print(f'Our asking price per lot is: {pearstock}')
                         print('pear stocks previous prices')
-                        print('Back       | 1 | 2 | 3 | 4 | 5')
-                        print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
+                        #print('Back       | 1 | 2 | 3 | 4 | 5')
+                        #print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * pearstock
                         if Money >= stocks_wanted:
@@ -139,8 +139,8 @@ def game():
                         ripoffstock = randint(2000,5000)
                         print(f'Our asking price per lot is: {ripoffstock}')
                         print('pear stocks previous prices')
-                        print('Back       | 1 | 2 | 3 | 4 | 5')
-                        print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
+                       # print('Back       | 1 | 2 | 3 | 4 | 5')
+                       # print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * ripoffstock
                         if Money >= stocks_wanted:
@@ -158,8 +158,8 @@ def game():
                         chingchongstock = randint(3500,5000)
                         print (f'股票价钱是：{chingchongstock} (our price per lot is: {chingchongstock})')
                         print(f'股票上个星期的价钱 (stock price previous prices)： ')
-                        print('Back       | 1 | 2 | 3 | 4 | 5')
-                        print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
+                        #print('Back       | 1 | 2 | 3 | 4 | 5')
+                        #print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * chingchongstock
                         if Money >= stocks_wanted:
@@ -187,8 +187,8 @@ def game():
                         print('pear stocks previous prices')
                         print('Back       | 1 | 2 | 3 | 4 | 5')
                         print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
-                        answer = pyip.inputNum('How many lot would you like?')
-                        stocks_wanted = answer * pearstock
+                        #answer = pyip.inputNum('How many lot would you like?')
+                        #stocks_wanted = answer * pearstock
                         if Money >= stocks_wanted:
                             Money += stocks_wanted
                             pearstockamt -= stocks_wanted
@@ -204,8 +204,8 @@ def game():
                         ripoffstock = randint(2000,5000)
                         print(f'Our asking price per lot is: {ripoffstock}')
                         print('pear stocks previous prices')
-                        print('Back       | 1 | 2 | 3 | 4 | 5')
-                        print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
+                        #print('Back       | 1 | 2 | 3 | 4 | 5')
+                        #print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * ripoffstock
                         if ripoffstockamt >= stocks_wanted:
@@ -223,8 +223,8 @@ def game():
                         chingchongstock = randint(3500,5000)
                         print (f'股票价钱是：{chingchongstock} (our price per lot is: {chingchongstock})')
                         print(f'股票上个星期的价钱 (stock price previous prices)： ')
-                        print('Back       | 1 | 2 | 3 | 4 | 5')
-                        print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
+                        #print('Back       | 1 | 2 | 3 | 4 | 5')
+                        #print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * chingchongstock
                         if chingstockamt >= stocks_wanted:
@@ -762,8 +762,8 @@ def cryptopurchase(crypto_money, crypto_crypto,d1,d2,d3,d4,d5):
     cryptoprice = randint(100,450)
     print(f'the price of poopcoin is {cryptoprice}')
     print('Previous prices of poopcoin:')
-    print('Back  | 1 | 2 | 3 | 4 | 5')
-    print(f'Price | {d1} | {d2} | {d3} | {d4} | {d5} ')
+    #print('Back  | 1 | 2 | 3 | 4 | 5')
+    #print(f'Price | {d1} | {d2} | {d3} | {d4} | {d5} ')
     d1 = cryptoprice
     d2 = d1
     d3 = d2
@@ -798,8 +798,8 @@ def sellcrypto(sellcrypto_crypto, sellcrypto_money,d1,d2,d3,d4,d5):
     sell_crypto_price = randint(100,450)
     print(f'The sell price of poopcoin is: {sell_crypto_price}')
     print('Previous prices of poopcoin:')
-    print('Back  | 1 | 2 | 3 | 4 | 5')
-    print(f'Price | {d1} | {d2} | {d3} | {d4} | {d5} ')
+    #print('Back  | 1 | 2 | 3 | 4 | 5')
+    #print(f'Price | {d1} | {d2} | {d3} | {d4} | {d5} ')
     d1 = sell_crypto_price
     d2 = d1
     d3 = d2
