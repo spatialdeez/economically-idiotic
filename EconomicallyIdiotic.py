@@ -120,8 +120,8 @@ def game():
                         pearstock = randint(1000,2500)
                         print(f'Our asking price per lot is: {pearstock}')
                         print('pear stocks previous prices')
-                        #print('Back       | 1 | 2 | 3 | 4 | 5')
-                        #print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * pearstock
                         if Money >= stocks_wanted:
@@ -129,18 +129,19 @@ def game():
                             pearstockamt += stocks_wanted
                         else:
                             print('too bad. you are broke')
-                        stkd1_pear = pearstock
-                        stkd2_pear = stkd1_pear
-                        stkd3_pear = stkd2_pear
-                        stkd4_pear = stkd3_pear
-                        stkd5_pear = stkd4_pear
+                            stkd5_pear = stkd4_pear
+                            stkd4_pear = stkd3_pear
+                            stkd3_pear = stkd2_pear
+                            stkd2_pear = stkd1_pear
+                            stkd1_pear = pearstock
+
                 elif answer == 'not rip off stock':
                         print('pls boiy defininethy not ripp ofkf')
                         ripoffstock = randint(2000,5000)
                         print(f'Our asking price per lot is: {ripoffstock}')
                         print('pear stocks previous prices')
-                       # print('Back       | 1 | 2 | 3 | 4 | 5')
-                       # print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * ripoffstock
                         if Money >= stocks_wanted:
@@ -148,18 +149,19 @@ def game():
                             ripoffstockamt += stocks_wanted
                         else:
                             print('too bad. you are broke')
+                        stkd5_ripoff = stkd4_ripoff
+                        stkd4_ripoff = stkd3_ripoff
+                        stkd3_ripoff = stkd2_ripoff
+                        stkd2_ripoff = stkd1_ripoff
                         stkd1_ripoff = ripoffstock
-                        stkd2_ripoff= stkd1_ripoff
-                        stkd3_ripoff= stkd2_ripoff
-                        stkd4_ripoff= stkd3_ripoff
-                        stkd5_ripoff= stkd4_ripoff
+
                 elif answer == 'ching chong stock':
                         print('早安，请你买我们的股票。这是最好的股票，别错过！(Good morning, please buy our stock. It is the best stock ever!)')
                         chingchongstock = randint(3500,5000)
                         print (f'股票价钱是：{chingchongstock} (our price per lot is: {chingchongstock})')
                         print(f'股票上个星期的价钱 (stock price previous prices)： ')
-                        #print('Back       | 1 | 2 | 3 | 4 | 5')
-                        #print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
+                        print('Back       | 1 | 2 | 3 | 4 | 5')
+                        print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
                         answer = pyip.inputNum('How many lot would you like?')
                         stocks_wanted = answer * chingchongstock
                         if Money >= stocks_wanted:
@@ -167,11 +169,12 @@ def game():
                             chingstockamt += stocks_wanted
                         else:
                             print('too bad. you are broke')
-                        stkd1_ching = chingchongstock
-                        stkd2_ching = stkd1_ching
-                        stkd3_ching = stkd2_ching
-                        stkd4_ching = stkd3_ching
-                        stkd5_ching = stkd4_ching
+                            stkd5_ching = stkd4_ching
+                            stkd4_ching = stkd3_ching
+                            stkd3_ching = stkd2_ching
+                            stkd2_ching = stkd1_ching
+                            stkd1_ching = chingchongstock
+
 
                 elif answer == 'bri ish stock':
                         print('We sell the creamiest Fish And Chips. So if you want to talk PoSh, buy our stocks now!')
@@ -187,18 +190,18 @@ def game():
                         print('pear stocks previous prices')
                         print('Back       | 1 | 2 | 3 | 4 | 5')
                         print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
-                        #answer = pyip.inputNum('How many lot would you like?')
-                        #stocks_wanted = answer * pearstock
+                        answer = pyip.inputNum('How many lot would you like?')
+                        stocks_wanted = answer * pearstock
                         if Money >= stocks_wanted:
                             Money += stocks_wanted
                             pearstockamt -= stocks_wanted
                         else:
                             print('too bad. you are broke')
-                        stkd1_pear = pearstock
-                        stkd2_pear = stkd1_pear
-                        stkd3_pear = stkd2_pear
-                        stkd4_pear = stkd3_pear
-                        stkd5_pear = stkd4_pear
+                            stkd5_pear = stkd4_pear
+                            stkd4_pear = stkd3_pear
+                            stkd3_pear = stkd2_pear
+                            stkd2_pear = stkd1_pear
+                            stkd1_pear = pearstock
                     elif answer == 'not rip off stock':
                         print('pls boiy defininethy not ripp ofkf')
                         ripoffstock = randint(2000,5000)
@@ -213,11 +216,11 @@ def game():
                             ripoffstockamt -= stocks_wanted
                         else:
                             print('too bad. you are broke')
+                        stkd5_ripoff = stkd4_ripoff
+                        stkd4_ripoff = stkd3_ripoff
+                        stkd3_ripoff = stkd2_ripoff
+                        stkd2_ripoff = stkd1_ripoff
                         stkd1_ripoff = ripoffstock
-                        stkd2_ripoff= stkd1_ripoff
-                        stkd3_ripoff= stkd2_ripoff
-                        stkd4_ripoff= stkd3_ripoff
-                        stkd5_ripoff= stkd4_ripoff
                     elif answer == 'ching chong stock':
                         print('早安，请你买我们的股票。这是最好的股票，别错过！(Good morning, please buy our stock. It is the best stock ever!)')
                         chingchongstock = randint(3500,5000)
@@ -232,11 +235,11 @@ def game():
                             chingstockamt -= stocks_wanted
                         else:
                             print('too bad. you are broke')
-                        stkd1_ching = chingchongstock
-                        stkd2_ching = stkd1_ching
-                        stkd3_ching = stkd2_ching
-                        stkd4_ching = stkd3_ching
-                        stkd5_ching = stkd4_ching
+                            stkd5_ching = stkd4_ching
+                            stkd4_ching = stkd3_ching
+                            stkd3_ching = stkd2_ching
+                            stkd2_ching = stkd1_ching
+                            stkd1_ching = chingchongstock
 
                     elif answer == 'bri ish stock':
                         print('We sell the creamiest Fish And Chips. So if you want to talk PoSh, buy our stocks now!')
