@@ -4,8 +4,9 @@ from random import randint
 try:
     import pyautogui
     import pyinputplus as pyip
+    from playsound import playsound
 except:
-    print('Hmm, it seems like you have hot installed two of our VERY special modules that will be needed to work the\n magic! Plese enter these into the command line in the terminal: \n pip install PyInputPlus \n pip install PyAutoGUI \n (For mac and linux users please use pip3 rather than pip)')
+    print('Hmm, it seems like you have hot installed three of our VERY special modules that will be needed to work the\n magic! Plese enter these into the command line in the terminal: \n pip install PyInputPlus \n pip install PyAutoGUI \n pip install playsound \n (For mac and linux users please use pip3 rather than pip)')
 
 
 
@@ -190,7 +191,7 @@ def game():
                         print('pear stocks previous prices')
                         print('Back       | 1 | 2 | 3 | 4 | 5')
                         print(f'Prev. price| {stkd1_pear} | {stkd2_pear} | {stkd3_pear} | {stkd4_pear} | {stkd5_pear} ')
-                        answer = pyip.inputNum('How many lot would you like?')
+                        answer = pyip.inputNum('How many stock would you like?')
                         stocks_wanted = answer * pearstock
                         if Money >= stocks_wanted:
                             Money += stocks_wanted
@@ -205,7 +206,7 @@ def game():
                     elif answer == 'not rip off stock':
                         print('pls boiy defininethy not ripp ofkf')
                         ripoffstock = randint(2000,5000)
-                        print(f'Our asking price per lot is: {ripoffstock}')
+                        print(f'Our asking price per stock is: {ripoffstock}')
                         print('pear stocks previous prices')
                         #print('Back       | 1 | 2 | 3 | 4 | 5')
                         #print(f'Prev. price| {stkd1_ripoff} | {stkd2_ripoff} | {stkd3_ripoff} | {stkd4_ripoff} | {stkd5_ripoff} ')
@@ -224,7 +225,7 @@ def game():
                     elif answer == 'ching chong stock':
                         print('早安，请你买我们的股票。这是最好的股票，别错过！(Good morning, please buy our stock. It is the best stock ever!)')
                         chingchongstock = randint(3500,5000)
-                        print (f'股票价钱是：{chingchongstock} (our price per lot is: {chingchongstock})')
+                        print (f'股票价钱是：{chingchongstock} (our price per stock is: {chingchongstock})')
                         print(f'股票上个星期的价钱 (stock price previous prices)： ')
                         #print('Back       | 1 | 2 | 3 | 4 | 5')
                         #print(f'Prev. price| {stkd1_ching} | {stkd2_ching} | {stkd3_ching} | {stkd4_ching} | {stkd5_ching} ')
