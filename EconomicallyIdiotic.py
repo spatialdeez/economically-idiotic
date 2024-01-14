@@ -6,7 +6,8 @@ try:
     import pyinputplus as pyip
     from playsound import playsound
 except:
-    print('Hmm, it seems like you have hot installed three of our VERY special modules that will be needed to work the\n magic! Plese enter these into the command line in the terminal: \n pip install PyInputPlus \n pip install PyAutoGUI \n pip install playsound \n (For mac and linux users please use pip3 rather than pip)')
+    print('Hmm, it seems like you have not installed three of our VERY special modules that will be needed to work the\n magic! Plese enter these into the command line in the terminal: \n pip install PyInputPlus \n pip install PyAutoGUI \n pip install playsound \n (For mac and linux users please use pip3 rather than pip)')
+
 
 
 
@@ -66,6 +67,19 @@ def game():
     currentjob = ''
     fulltimesalary = 0
 
+    #rubbsish search
+    Rubbishexp = 1
+    rubinventory = {'Sneakers' : 0,
+                    'Plastic bottle': 0,
+                    'Hard drive': 0,
+                    'Lottery ticket': 0,
+                    'Tin can': 0,
+                    'Old revision textbook': 0,
+                    '$5 bill': 0,
+                    'CPU chip': 0,
+                    'Batteries': 0}
+    possible_items_can_be_found_outskirt = ['Sneakers', 'Plastic bottle', 'Hard drive', 'Lottery ticket', 'Tin can', 'Old revision book', '$5 bill', 'CPU chip', 'Batteries', 'Mysterious item']
+
     jobs = ['Fast Food crew ', 'Stocker ', 'Cashier ', 'Musician ', 'Cleaner ', 'Cook ','Manager ', 'Sales rep ', 'Teacher ', 'Engineer ', 'Police ', 'Accountant ', 'Banker' , 'Lawyer ','CEO ', 'Doctor ']
 
     print('Economically Idiotic, version 0.7.6 by randomchez#8734')
@@ -105,7 +119,7 @@ def game():
 
     while True:
         print('Select an Activity:')
-        print('''(1) crash the stocks (NEW!)\n(2) check your idiotic phone\n(3) mine some crypto\n(4) Try the exams\n(5) Work for money\n(6) Go to the lottery''')
+        print('''(1) crash the stocks \n(2) check your idiotic phone\n(3) mine some crypto\n(4) Try the exams\n(5) Work for money\n(6) Go to the lottery\n(7) Find/sell rubbish\n(8) start a business (building...)\n(9) feedback the developer''')
         answer = pyip.inputNum()
         if answer == 1:
             stocks_wanted = 0
@@ -348,6 +362,7 @@ def game():
                 print(currentjob)
                 print(fulltimesalary)
         elif answer == 3:
+            ASCII_ART('hack')
             print('>>> TERMINAL OPEN <<<')
             print('>>> LOADING PROGRAM <<<')
             try:
@@ -563,7 +578,7 @@ def game():
                         print('No one would hire you')
             elif answer == 'Full-time':
                 print('---Full time---')
-                if diplomacert >= 1:
+                if diplomacert <= 1:
                     print('Requires a diploma (At least)')
                 else:
                     answer = pyip.inputMenu(('Find a job', 'Work at your current job'), lettered=False, numbered=True)
@@ -758,7 +773,153 @@ def game():
                     print(f'You collected {collectlot}')
                     Money += collectlot
                     print(f'Money: {Money}')
+        elif answer == 7:
+            print('Here to find/sell rubbish?')
+            answer = pyip.inputMenu(['Find', 'Sell'], lettered=False, numbered=True)
+            if answer == 'Sell':
+                print('Price list')
+                print('1. Sneakers: $30/pair')
+                print('2. Plastic bottle: $1/bottle')
+                print('3. Hard drive: $100/unit')
+                print('4. Lottery ticket: $10/ticket')
+                print('5. Tin can: $7/can')
+                print('6. Old revision book: $24/book')
+                print('7. $5 bill: $5/bill')
+                print('8. CPU chip: $200/unit')
+                print('9. Batteries: $10/unit')
+                print('Your inventory: ')
+                print(rubinventory)
+                input('Press enter to continue...')
+                print('Please input the unit index number...')
+                print('NOTE: no money is given with a unit number of 0.')
+                answer = pyip.inputNum(greaterThan=0, lessThan=10)
+                if answer == 1:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("Sneakers sold!")
+                    rubinventory['Sneakers'] -= answer
+                    Money += 30 * answer
+                elif answer == 2:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("Plastic bottle sold!")
+                    rubinventory['Plastic bottle'] -= answer
+                    Money += 1 * answer
+                elif answer == 3:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("Hard drive sold!")
+                    rubinventory['Hard drive'] -= answer
+                    Money += 100 * answer
+                elif answer == 4:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("Lottery ticket sold!")
+                    rubinventory['Lottery ticket'] -= answer
+                    Money += 10 * answer
+                elif answer == 5:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("Tin can sold!")
+                    rubinventory['Tin can'] -= answer
+                    Money += 7 * answer
+                elif answer == 6:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("Old revision book sold!")
+                    rubinventory['Old revision book'] -= answer
+                    Money += 24 * answer
+                elif answer == 7:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("$5 bill sold!")
+                    rubinventory['$5 bill'] -= answer
+                    Money += 5 * answer
+                elif answer == 8:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("CPU chip sold!")
+                    rubinventory['CPU chip'] -= answer
+                    Money += 200 * answer
+                elif answer == 9:
+                    print('How many do you want to sell?')
+                    answer = pyip.inputNum()
+                    print("Batteries sold!")
+                    rubinventory['Battries'] -= answer
+                    Money += 10 * answer
+                continue
+                
+            print('Welcome to rubbish bin search. Finding a special location...' )
+            print('')
+            print('____---____' + '      ' + '____---____' + '      ' + '____---____')
+            print('|         |' + '      ' + '|         |' + '      ' + '|         |')
+            print('|         |' + '      ' + '|         |' + '      ' + '|         |')                
+            print('|         |' + '      ' + '|         |' + '      ' + '|         |')
+            print('|         |' + '      ' + '|         |' + '      ' + '|         |')
+            print('|         |' + '      ' + '|         |' + '      ' + '|         |')
+            print('-----------' + '      ' + '-----------' + '      ' + '-----------')                
+            print('Choose your rubbish bin...')
+            answer = pyip.inputNum(greaterThan=0, lessThan=4)
+            # Items that can be found: 
+            #'Sneakers', 'Plastic bottle', 'Hard drive', 'Lottery ticket', 'Tin can', 'Old revision book', '$5 bill', 
+            #'CPU chip', 'Batteries', 'Mysterious item'                
+            if answer == 1 or answer == 2 or answer == 3:
+                print('Digging around a little, you found...')
+                time.sleep(1)
+                item_found = possible_items_can_be_found_outskirt[randint(0,9)]
+                print(item_found + '!')
+                time.sleep(2)
+                if item_found == 'Sneakers':
+                    rubinventory['Sneakers'] += Rubbishexp
 
+                elif item_found == 'Plastic bottle':
+                    rubinventory['Plastic bottle'] += Rubbishexp
+
+                elif item_found == 'Hard drive':
+                    rubinventory['Hard drive'] += Rubbishexp
+
+                elif item_found == 'Lottery ticket':
+                    rubinventory['Lottery ticket'] += Rubbishexp
+
+                elif item_found == 'Tin can':
+                    rubinventory['Tin can'] += Rubbishexp
+
+                elif item_found == 'Old revision book':
+                    rubinventory['Old revision book'] += Rubbishexp
+
+                elif item_found == '$5 bill':
+                    rubinventory['$5 bill'] += Rubbishexp
+
+                elif item_found == 'CPU chip':
+                    rubinventory['CPU chip'] += Rubbishexp
+
+                elif item_found == 'Batteries':
+                    rubinventory['Batteries'] += Rubbishexp
+
+                elif item_found == 'Mysterious item':
+                    explosive = randint(1,100)
+                    if explosive >= 40:
+                        print('KABOOM! The item was a bomb! You Died!')
+                        ASCII_ART('dead')
+                        sys.exit()
+                    else:
+                        print('You found nothing!')
+            
+            giveexpchance = randint(1,100)
+            if giveexpchance >= 75:
+                Rubbishexp += 1
+
+
+                    
+                        
+
+
+        elif answer == 8:
+            print('Work in progress...')
+            pass
+        elif answer == 9: 
+            print('Hello! Thanks for playing this amazing game I have created. It has been a honor to \n make such games. If you have any questions or suggestions, please join the discord server: https://discord.gg/fX7XnfVEpw. \n and I will get back to you as soon as possible!')
+            time.sleep(10)
 def cryptopurchase(crypto_money, crypto_crypto,d1,d2,d3,d4,d5):
     crypto_crypto = int(crypto_crypto)
     crypto_money = int(crypto_money)
@@ -856,8 +1017,69 @@ def billcheck(billcheck_bill, billcheck_money):
         else:
             print('Goodbye!')
             return billcheck_bill, billcheck_money
-
-
+def ASCII_ART(condition):
+    if condition == 'dead':
+        print("  _____")
+        print(" /     \\")
+        print("| () () |")
+        print(" \  ^  /")
+        print("  |||||")
+        print("  |||||")
+    if condition == 'hack': 
+        print("""⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣤⣶⡎⠉⠀⠙⢧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠿⠉⠀⠀⠀⠀⠀⠈⢳⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡼⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡤⣿⠛⠶⠤⠀⠀⠀⠀⠀⠀⠀⠀⠈⣷⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣥⣈⠉⠒⠦⣄⠀⣀⠀⠀⠀⠀⠀⠀⠸⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠛⠓⠲⣄⠈⠳⡌⠳⡀⠀⠀⠀⢸⣷⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⡇⠀⠀⠈⠳⡀⠈⢦⡹⡀⠀⠀⢸⠃⢧⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⠟⢳⣤⠀⢻⡿⣆⠀⢳⡗⠀⠀⡼⠀⢸⡆⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣷⣤⡟⠀⠀⠈⠛⣆⠀⢷⠀⠀⡇⠀⠨⢧⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣧⣠⠀⠀⠀⠘⣆⠈⠃⣰⠁⠀⠄⠸⣦⡀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣷⡄⠀⠀⠀⠸⡅⢀⡏⠀⠀⠀⢠⠏⠱⣄⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⣿⣷⣤⣠⠖⢻⠁⡼⠀⠀⢀⡴⠋⠀⠀⠈⢦⡀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡟⠉⢻⡻⣿⣿⣿⢧⣠⢏⣾⣡⠤⠚⣏⠀⠀⠀⠀⠀⠀⠉⠣⡄⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡞⡿⠁⢠⢿⣿⢿⣿⡿⠋⣿⡏⠉⠀⠀⠀⣹⡞⠁⠀⠀⠀⠀⠀⠀⢸⡀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⡇⣆⡴⡟⢸⢸⢰⡄⠀⠀⣹⢱⠀⠀⠀⢰⢿⡄⠀⠀⠀⠀⠀⠀⠀⠀⢧
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣽⠃⣿⠀⠃⢸⢸⠘⡇⠀⠀⣿⢸⠀⠀⠀⠃⠀⢧⡄⢀⡴⠃⠀⠀⠀⠀⠘
+⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⢿⡧⣿⠀⠀⡸⣾⠀⡇⠀⠀⣯⡏⠀⠀⠀⠀⠀⣸⡷⣫⣴⠀⠀⠀⢀⠂⢀
+⠘⣿⣦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⣇⠀⠀⣿⠀⠀⡇⣿⠰⠇⠀⣸⢻⠇⠀⠀⠀⠀⢰⠿⠞⣫⢞⡠⠀⢀⠂⠀⢸
+⠀⠘⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡾⣏⠻⣦⣤⣿⠀⠀⢧⡇⠀⠀⠀⢹⣾⠀⠀⠀⠀⢠⡏⣠⣼⣋⣉⣀⣴⣁⣀⣀⡎
+⠀⠀⠈⢿⣿⣿⣿⣿⣦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣠⣷⡌⠙⠺⢭⡿⠀⠀⠸⠆⠀⠀⠀⢸⣿⡀⠀⠀⠀⡟⢀⡧⣄⣠⣠⣤⣤⣤⣀⣈⡇
+⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣷⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠿⠃⠀⠈⠢⠐⢤⣧⠀⠀⠀⠀⠀⠀⠀⢸⡿⠀⠀⠀⣼⠁⡼⠉⠛⠒⠒⠒⠒⠶⠶⢿⠁
+⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⣿⣷⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⢀⣤⣛⡛⠛⢢⠀⠀⢠⠈⢪⣻⡇⠀⠀⠀⠀⠀⠀⠐⠃⠀⠀⢰⠏⢸⡧⠤⠤⠤⢤⣀⣀⡀⠀⡾⠀
+⠀⠀⠀⠀⠀⠀⢻⣿⣿⣿⣿⣿⣿⣿⣿⣿⡄⠀⣀⣀⠤⠴⠒⠚⣩⠽⣿⠖⠋⠉⠀⠀⣦⠈⣧⠀⠈⣳⣼⡿⠛⠀⠀⠀⠀⠀⠀⠀⢀⡤⠴⠞⠀⣿⠓⠢⠤⠤⠤⠤⣌⣉⣻⡇⠀
+⠀⠀⠀⠀⠀⠀⠀⠹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣭⣭⣶⣦⣤⣶⠋⢡⣴⠇⢀⣴⡦⠀⣠⢿⣤⣿⡴⠒⢹⣏⣀⠀⠀⢀⣀⣀⠀⠀⢀⣠⣄⢀⣤⣾⡯⡀⠀⠉⠒⠒⠤⢤⣭⣽⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠙⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠁⢠⣻⠃⡴⠛⢁⣴⡯⠇⠀⠀⠈⠉⠉⠉⢹⡍⠉⠉⠙⣷⠈⢻⠉⠻⠀⠘⣟⠻⠀⡉⠁⠀⠀⠀⠀⠀⠀⣠⣿⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣿⣿⣿⣿⣿⣿⣾⣿⣮⣵⢰⣧⣞⣶⡿⢋⣡⠔⠚⣀⡀⠀⠀⠀⠀⢨⠇⠀⠀⠀⢹⠀⠈⠁⠀⠀⠀⠿⠀⠀⠈⠓⠶⠄⠀⠐⣲⡾⠋⡿⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⣿⣿⣿⣿⣿⣿⣿⣿⣾⡿⢿⣿⢎⢠⠟⡠⣾⠟⢋⡠⠤⠤⢤⠤⠾⠤⠤⣤⢤⡼⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡴⠞⠁⢀⣴⠇⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⢿⣿⣿⣿⣿⡙⠻⣿⣿⣿⣿⣝⡋⣮⣴⣞⣥⡄⠀⠀⢀⣀⡤⠴⠚⠛⠪⣟⡧⢤⣄⣠⣄⡐⠦⣤⣤⣤⠴⠚⠉⠀⠀⠀⣾⠁⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⣿⣿⣿⡄⠈⠙⢿⣿⣿⣿⣿⠟⠋⣁⣤⠴⠚⠉⠁⠀⠀⠀⠀⠀⠀⠉⠲⢤⡀⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⢀⣿⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢿⣿⡄⠀⠀⢙⣹⣷⠶⠟⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⠦⣄⠀⠀⠀⠀⠀⠀⠀⠰⢚⡇⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠿⡾⠿⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠂⠀⠀⠀⠀⠀⠈⠛⠃⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀""")
+    if condition == 'coin':
+        print('''   
+        ████████████        
+    ██████      ████████    
+  ████    ░░░░░░░░░░████    
+  ██  ░░░░      ██░░░░████  
+████  ░░░░  ░░░░██░░░░████  
+██  ░░░░░░  ░░░░██░░░░░░████
+██  ░░░░░░  ░░░░██░░░░░░████
+██  ░░░░░░  ░░░░██░░░░░░████
+██  ░░░░░░  ░░░░██░░░░░░████
+██  ░░░░░░  ░░░░██░░░░░░████
+██  ░░░░░░  ░░░░██░░░░░░████
+████  ░░░░  ░░░░██░░░░████  
+  ██  ░░░░████████░░░░████  
+  ████  ░░░░░░░░░░░░████    
+    ██████░░░░░░████████    
+        ████████████        
+            
+ 
+''')
 #TEST PROGRAMS:
 #After the 2 indents are items that dont need to be tested
 #m, c = sellcrypto(100, 0)
